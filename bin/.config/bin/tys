@@ -1,0 +1,23 @@
+#!/bin/bash
+
+get_copy_cmd() {
+  [[ $( uname -s ) =~ "Linux*" ]] && echo "xclip -in -selection clipboard" || echo "pbcopy"
+}
+
+is_selection_active() {
+  local active_pane=$( tmux lsp -F '#{selection_present};#{pane_active}' | grep -i '1$' )
+  local selection_enabled=${active_pane%;*}
+  
+  [[ "$selection_enabled" == "1" ]] && return 0 || return 1
+}
+
+COPY_CMD=$( get_copy_cmd )
+tcopy() {
+  tmux send -X copy-pipe-and-cancel "$COPY_CMD"
+}
+
+if is_selection_active; then
+  tcopy
+else
+  tmux switch-client -T copy-mode-vi-yank
+fi

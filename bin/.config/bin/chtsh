@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+USER_LOCAL_BIN=$HOME/.local/bin
+
+if [ ! -f $USER_LOCAL_BIN/cht.sh ]; then
+  CHTSH_PATH=$USER_LOCAL_BIN/cht.sh
+  mkdir -p $USER_LOCAL_BIN
+  curl https://cht.sh/:cht.sh | sudo tee $CHTSH_PATH
+  sudo chmod +x $CHTSH_PATH
+fi
+
+tmux neww bash -c "cht.sh --shell"

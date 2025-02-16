@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Script to have <F7> either spawn pane or zoom
+
+TMUX_PANE_COUNT=$(tmux list-panes | wc -l)
+
+# Only 1 pane, launch a new typical terminal one
+if (($TMUX_PANE_COUNT == 1)); then
+	tmux split-window -v -c '#{pane_current_path}' -l '30%'
+	exit 0
+fi
+
+tmux resize-pane -Z

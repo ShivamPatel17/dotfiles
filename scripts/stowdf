@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# For first time stow, sample command
+# stow -t ~ bin
+
+## everything below is stolen from Jon F
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+DOTFILES_DIR="${SCRIPT_DIR}/.."
+
+STOW_ARGS="-d $DOTFILES_DIR -t $HOME"
+ACTION="stow"
+TO_STOW=$(ls -l | grep '^d' | grep -v 'scripts' | awk '{ print $NF }')
+
+source ${SCRIPT_DIR}/utils.sh
+
+# Unstow by passing -D as first arg
+if [ "$1" == "-D" ]; then
+  STOW_ARGS="$STOW_ARGS -D"
+  ACTION="unstow"
+  shift
+fi
+
+if [ "$#" -gt 0 ]; then
+  TO_STOW=()
+  for dir in "$@"; do
+    if [ ! -d "$DOTFILES_DIR/$dir" ]; then
+      log_warn "'$dir' doesn't exist. Skipping."
+    else
+      TO_STOW+=($dir)
+    fi
+  done
+fi
+
+# Stow directory
+log_info "Action = $ACTION"
+for dir in "${TO_STOW[@]}"; do
+  log_info "  - ${dir}"
+  stow $STOW_ARGS $dir
+done

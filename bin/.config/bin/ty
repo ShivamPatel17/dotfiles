@@ -1,0 +1,127 @@
+#!/bin/bash
+# I want to TMUX to behave like VIM
+# yw - yank word
+# y$ - yank til end of sentence
+
+get_copy_cmd() {
+  [[ $( uname -s ) =~ "Linux*" ]] && echo "xclip -in -selection clipboard" || echo "pbcopy"
+}
+
+is_selection_active() {
+  local active_pane=$( tmux lsp -F '#{selection_present};#{pane_active}' | grep -i '1$' )
+  local selection_enabled=${active_pane%;*}
+  
+  [[ "$selection_enabled" == "1" ]] && return 0 || return 1
+}
+
+tbegin() {
+  tmux send -X begin-selection
+}
+
+tjumpback() {
+  tmux send -X jump-backward $1
+}
+
+tjumpforward() {
+  tmux send -X jump-forward $1
+}
+
+tjumptobackward() {
+  tmux send -X jump-to-backward $1
+}
+
+tjumptoforward() {
+  tmux send -X jump-to-forward $1
+}
+
+yankinside() {
+  local bc=$1
+  local fc=$( [ -z $2 ] && echo $1 || echo $2 )
+  tjumptobackward $bc
+  tbegin
+  tjumptoforward $fc
+  tcopy
+}
+
+tend() {
+  [ "$1" == "e" ] && tmux send -X next-word-end || tmux send -X next-space-end
+}
+
+tback() {
+  [ "$1" == "b" ] && tmux send -X previous-word || tmux send -X previous-space
+}
+
+tswitch() {
+  tmux switch-client -T copy-mode-vi
+}
+
+COPY_CMD=$( get_copy_cmd )
+tcopy() {
+  tmux send -X copy-pipe-and-cancel "$copy_cmd"
+}
+
+case $1 in
+  v)
+    tbegin
+    ;;
+  yy)
+    tmux send -X start-of-line
+    tbegin
+    tmux send -X end-of-line
+    tcopy
+    ;;
+  y$)
+    tbegin
+    tmux send -X end-of-line
+    tcopy
+    ;;
+  yw)
+    tbegin
+    tend "e"
+    tcopy
+    ;;
+  yW)
+    tbegin
+    tend "E"
+    tcopy
+    ;;
+  yb)
+    tbegin
+    tback "b"
+    tcopy
+    ;;
+  yB)
+    tbegin
+    tback "B"
+    tcopy
+    ;;
+  yidq)
+    yankinside '"'
+    ;;
+  yisq)
+    yankinside "'"
+    ;;
+  yisb)
+    yankinside '[' ']'
+    ;;
+  yip)
+    yankinside '(' ')'
+    ;;
+  yiW)
+    tback "B"
+    tbegin
+    tend "E"
+    tcopy
+    ;;
+  yiw)
+    tback "b"
+    tbegin
+    tend "e"
+    tcopy
+    ;;
+  *)
+    tmux send -X cancel;
+    ;;
+esac
+
+tswitch
