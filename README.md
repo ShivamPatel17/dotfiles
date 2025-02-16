@@ -16,18 +16,18 @@
 
 ### These are the services you'll need from home HomeBrew
 
-brew install rg
-brew install neovim
-brew install fzf
-brew install stow
-brew install --cack ghostty
-brew install --cask nikitabobko/tap/aerospace
-brew install jesseduffield/lazydocker/lazydocker
-brew install skhd
-brew install zoxide
-[brew install SketchyBar](https://github.com/FelixKratz/SketchyBar)
-brew install --cask font-hack-nerd-font (used for sketchy bar icons)
-[brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
+- brew install rg
+- brew install neovim
+- brew install fzf
+- brew install stow
+- brew install --cack ghostty
+- brew install --cask nikitabobko/tap/aerospace
+- brew install jesseduffield/lazydocker/lazydocker
+- brew install skhd
+- brew install zoxide
+- [brew install SketchyBar](https://github.com/FelixKratz/SketchyBar)
+- brew install --cask font-hack-nerd-font (used for sketchy bar icons)
+- [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
 #### tmux
 
