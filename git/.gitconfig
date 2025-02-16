@@ -1,0 +1,30 @@
+# Run these manually until you figure out how to get this to work in the config
+
+# git config --global rerere.enabled true
+[user]
+	name = Shivam
+[alias]
+  branch-name = !git rev-parse --abbrev-ref HEAD
+  publish = !git push -u origin $(git branch-name)
+  cleanse = "! git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D"   # delete branches where the corresponding remote branch is deleted
+  co = checkout
+  cm = commit -m
+  ce = commit --allow-empty -m
+  sneak = commit --amend --no-edit
+  rewind = reset HEAD^
+  br = branch
+  a = add -A
+  aliases = config --get-regexp alias
+  edit = config --global --edit
+  obi1 = push --force-with-lease
+  s = status
+  lg = log --oneline --graph --decorate # View Git log in one-line format
+  trim = remote prune origin
+  org = "!git fetch origin && git reset --hard origin/$(git branch --show-current)" # reset to origin
+  
+[pager]
+	branch = false
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main

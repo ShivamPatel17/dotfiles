@@ -1,0 +1,17 @@
+# This file contains my SKHD config
+# SKHD allows me to change applications on MacOS with shortcuts
+# SKHD - https://github.com/koekeishiya/skhd/tree/master
+# To update any of these config, make the changes here and restart the skhd process with
+# skhd --restart-service
+
+# App shortcuts 
+alt - c : open -a 'Google Chrome'
+alt - t : open -a 'ghostty'
+alt - p : open -a 'Spotify'
+alt - g : open -a 'ChatGPT'
+alt - m : open -a 'Messages'
+
+# Work Related
+alt - s : open -a 'Slack'
+alt - d : open -a 'Docker Desktop'
+alt - z : open -a 'zoom.us'
