@@ -12,13 +12,9 @@
       - [auto suggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [theme](https://github.com/romkatv/powerlevel10k)
 
-- [fzf](https://github.com/junegunn/fzf)
-  - got some shortcuts set up
-- stow
+## HomeBrew
 
-# HomeBrew
-
-## These are the services you'll need from home HomeBrew
+### These are the services you'll need from home HomeBrew
 
 brew install rg
 brew install neovim
@@ -33,14 +29,14 @@ brew install zoxide
 brew install --cask font-hack-nerd-font (used for sketchy bar icons)
 [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
-### tmux
+#### tmux
 
 `brew install tmux`
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 - be sure to run <C-a> shift+i to install the plugins
 
-## [Stow](https://www.gnu.org/software/stow/)
+#### [Stow](https://www.gnu.org/software/stow/)
 
 - all configuration is set up to be stow'd
 
@@ -54,26 +50,26 @@ brew install --cask font-hack-nerd-font (used for sketchy bar icons)
 
 - the repo still needs to be set up in this way..
 
-## ASDF
+#### ASDF
 
 - runtime version manager
 
-## aerospace
+#### aerospace
 
 - for tiling
 
-## JankyBorders
+#### JankyBorders
 
 - for adding colored borders to my applications
 
-## SketchyBar
+#### SketchyBar
 
 - for a cooler menu bar
 
-## Ghostty
+#### Ghostty
 
 - my terminal emulator
 
-## Fonts
+#### Fonts
 
 - use the FontBook app to downloand and install whatever font you want
