@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Run this script on a new macos machine to get started
+# TODO: Run this script on a new macos machine to get started
 
 # Define paths
 DOTFILES_DIR="/Users/shivampatel/Toolbox/dotfiles"

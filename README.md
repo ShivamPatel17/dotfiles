@@ -1,6 +1,6 @@
 # Basic set up
 
-[Inspiration taken from JFenstermacher](https://github.com/JFenstermacher/dotfiles/)
+[Inspiration from JFenstermacher](https://github.com/JFenstermacher/dotfiles/)
 
 ## zsh
 
@@ -41,16 +41,14 @@ brew install --cask font-hack-nerd-font (used for sketchy bar icons)
 - all configuration is set up to be stow'd
 
   - every folder in this repo should be stowable (symlinked)
-  - example: `stow -t ~ nvim` (stow -t <target_dir> <directory_you_want_to_stow>)
+  - example: `stow -t ~ nvim` (`stow -t <target_dir> <directory_you_want_to_stow>`)
     - so everything in the `/nvim` will get copied over to `~`
       - and if you look at `/nvim` structure, you'll noticed all the config lives in `/nvim/.config/nvim`, because neovim will look for the conconfig in `~/.config/nvim`...
   - there's a `make stow` to stow everything
     - you can manually stow each of these folders to the home directory
       - git, nvim, psql, skhd, tmux, and zsh can all be stowed
 
-- the repo still needs to be set up in this way..
-
-#### ASDF
+#### asdf
 
 - runtime version manager
 
@@ -58,18 +56,18 @@ brew install --cask font-hack-nerd-font (used for sketchy bar icons)
 
 - for tiling
 
-#### JankyBorders
+#### jankyborders
 
 - for adding colored borders to my applications
 
-#### SketchyBar
+#### sketchybar
 
 - for a cooler menu bar
 
-#### Ghostty
+#### ghostty
 
 - my terminal emulator
 
-#### Fonts
+#### fonts
 
 - use the FontBook app to downloand and install whatever font you want
