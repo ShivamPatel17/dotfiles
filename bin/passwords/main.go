@@ -1,4 +1,4 @@
-// generate the binary and move to Toolbox/bin/.config/bin/
+// generate the binary and move to dotfiles/bin/.config/bin/
 // go build -o passwordgen main.go
 
 package main

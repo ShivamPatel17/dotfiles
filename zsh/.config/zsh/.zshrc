@@ -11,7 +11,7 @@
 # on a new computer, if you don't clone this repo to ~
 # might consider creating another file to export ZSHELRCS
 # and gitignore it
-export ZSHELLRCS="/Users/shivampatel/Toolbox/zsh/.config/zsh/zshrcs"
+export ZSHELLRCS="$HOME/Repos/dotfiles/zsh/.config/zsh/zshrcs"
 SAVEHIST=50000
 
 
@@ -22,7 +22,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.config/bin:/usr/local/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# add the executables you've got in the toolbox
+# add the executables you've got in the bin folder
 export PATH=$HOME/.config/bin:$PATH
 
 # Define the ZSHELLRCS directory
