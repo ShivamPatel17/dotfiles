@@ -26,7 +26,6 @@
 - brew install skhd
 - brew install zoxide
 - [brew install SketchyBar](https://github.com/FelixKratz/SketchyBar)
-- brew install --cask font-hack-nerd-font (used for sketchy bar icons)
 - [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
 #### tmux
