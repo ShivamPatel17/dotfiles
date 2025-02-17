@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" }, -- Ensure plenary.nvim is installed
   config = function()
     -- Initialize the global variable to false if not already set
-    vim.g.telescope_grep_hidden = vim.g.telescope_grep_hidden or false
+    vim.g.telescope_grep_hidden = vim.g.telescope_grep_hidden or true
 
     require("telescope").setup {
       defaults = {
