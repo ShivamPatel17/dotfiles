@@ -1,37 +1,9 @@
-# Getting Started
-
-- followed along the "Turn VIM into a full featured IDE with only one command" by dreams of code youtube
-
-## Prereqs
-
-1. neovim
-
-```
-brew install neovim
-```
-
-2. lazygit
-
-```
-brew install lazygit
-```
-
-3. formatters
-
-- prettier (through ASDF node.js)
-- stylua (through ASDF)
-
-4. mic
-
-`brew install luarocks`
-
-# about this set up
+# Neovim Set Up
 
 - everything was initally lifted from [NVChad](https://nvchad.com/)
   - run `NvChadReload` to reload your session with updated configs
 - when you mess around with plugins (LSP included), you may need to do a `:Lazy sync` to get things "synced"
-- the [lua config](./lua/configs) contains your configs
-  - to get more language support, you need to update the [lspconfg](./lua/configs/lspconfig.lua)
+- [nvim](../nvim/.config/nvim/) contains your configs
 
 ## Things to know about my nvim set up
 
@@ -43,6 +15,11 @@ brew install lazygit
 - [mason]() manages external tools, such as language servers, linters, formatters, and debugger
   - run `:Mason` to see which LSPs are installed
 - [nvimtree](https://github.com/nvim-tree/nvim-tree.lua) is your file explorer
+- [telescope](https://github.com/nvim-telescope/telescope.nvim) lets your fuzzy find & preview lists
+  - find files
+  - live grep
+- [lspconfig](../nvim/.config/nvim/lua/configs/lspconfig.lua) for autocompletes, go to definition, etc.
+- [lazygit](https://github.com/jesseduffield/lazygit) for git UI. I mostly use git cli, but this is useful for viewing diffs & file history
 
 ## Cool features from my workflow
 
@@ -56,8 +33,6 @@ brew install lazygit
 
 ### Features that I have available to me
 
-- Lsp client by language for code complete
-- diagnostics
 - lazygit (git ui)
 - Telescope
   - file/text search search
