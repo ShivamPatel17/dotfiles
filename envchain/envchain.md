@@ -14,6 +14,7 @@ brew install envchain
 
 ```
 envchain --set <namespace> <envvar>
+# you'll be prompted to enter the password. You can change it in the keychain app
 ```
 
 - use this var by chaining envchain with your command
