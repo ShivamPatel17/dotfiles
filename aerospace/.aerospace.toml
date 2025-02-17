@@ -12,7 +12,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   'exec-and-forget borders', # might need to kill borders with `pkill borders` to see the changes
-  'exec-and-forget sketchybar'
+  'exec-and-forget sketchybar', # add reload flag
 ]
 
 # Notify Sketchybar about workspace change
@@ -23,8 +23,9 @@ exec-on-workspace-change = [
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
   'exec-and-forget borders',
 ]
+
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = true 
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -55,6 +56,10 @@ default-root-container-orientation = 'auto'
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = true
 
+# need this to get sketchybar to start when you run "restart_aerospace"..
+[exec.env-vars]
+    PATH = '${HOME}/bin:${PATH}'
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -73,7 +78,7 @@ automatically-unhide-macos-hidden-apps = true
     inner.vertical =   8
     outer.left =       8
     outer.bottom =     8
-    outer.top =        [ { monitor."built-in" = 8 }, 48]
+    outer.top =        [ { monitor."built-in" = 16 }, 48]
     outer.right =      8
 
 # 'main' binding mode declaration

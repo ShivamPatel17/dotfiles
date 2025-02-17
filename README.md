@@ -1,6 +1,7 @@
 # Basic set up
 
-[Inspiration from JFenstermacher](https://github.com/JFenstermacher/dotfiles/)
+- [Inspiration from JFenstermacher](https://github.com/JFenstermacher/dotfiles/)
+- developed on arm64 architecture
 
 ## zsh
 
@@ -70,3 +71,8 @@
 #### fonts
 
 - use the FontBook app to downloand and install whatever font you want
+  - whenever you install a new font, clear the cache with `fc-cache -fv`
+
+## TODO
+
+- still need to figure out what all the dendencies are. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependies in one full sweep

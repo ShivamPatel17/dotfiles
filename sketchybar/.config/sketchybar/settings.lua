@@ -32,7 +32,7 @@ local function load_config()
 		},
 		group_paddings = 5,
 		hide_widgets = {},
-		icons = "sf-symbols", -- alternatively available: NerdFont
+		icons = "NerdFont", -- alternatively available: NerdFont
 		paddings = 3,
 		python_command = "python",
 		weather = {

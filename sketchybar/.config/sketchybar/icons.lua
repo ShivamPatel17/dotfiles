@@ -14,7 +14,7 @@ local icons = {
 		weather = {
 			sunny = "􀆭",
 			partly = "􀇔",
-			cloudy = "􀇂",
+			cloudy = "",
 			rainy = "􀇆",
 			snowy = "􀇎",
 			clear = "􀇀",
@@ -66,7 +66,21 @@ local icons = {
 		gear = "",
 		cpu = "",
 		clipboard = "Missing Icon",
+		clipboard_list = "",
+		restart = "󰑓",
+		ram = "",
 
+		weather = {
+			sunny = "󰖙",
+			partly = "",
+			cloudy = "󰖐",
+			rainy = "",
+			snowy = "",
+			clear = "",
+			foggy = "",
+			stormy = "󰖓",
+			sleet = "",
+		},
 		switch = {
 			on = "󱨥",
 			off = "󱨦",
@@ -91,12 +105,15 @@ local icons = {
 			download = "",
 			connected = "󰖩",
 			disconnected = "󰖪",
-			router = "Missing Icon",
+			router = "󰑩",
+			vpn = "󰖂",
 		},
 		media = {
 			back = "",
 			forward = "",
-			play_pause = "",
+			play_pause = "󰐎",
+			play = "",
+			pause = "",
 		},
 	},
 }
