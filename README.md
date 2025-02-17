@@ -15,9 +15,11 @@
 ## HomeBrew
 
 - running on arm64
+  - `uname -m` should print arm64
 
-### These are the services you'll need from home HomeBrew
+### Tools to download from HomeBrew
 
+- brew install asdf
 - brew install rg
 - brew install neovim
 - brew install fzf
@@ -29,6 +31,8 @@
 - brew install zoxide
 - [brew install SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
+- brew install lazygit
+- brew install envchain
 
 #### tmux
 
@@ -45,7 +49,7 @@
   - example: `stow -t ~ nvim` (`stow -t <target_dir> <directory_you_want_to_stow>`)
     - so everything in the `/nvim` will get copied over to `~`
       - and if you look at `/nvim` structure, you'll noticed all the config lives in `/nvim/.config/nvim`, because neovim will look for the conconfig in `~/.config/nvim`...
-  - there's a `make stow` to stow everything
+  - there's a `make stow` to stow everything and `make unstow` to remove the symlinks
     - you can manually stow each of these folders to the home directory
       - git, nvim, psql, skhd, tmux, and zsh can all be stowed
 
