@@ -1,7 +1,6 @@
-# Basic set up
+# High level set up
 
 - [Inspiration from JFenstermacher](https://github.com/JFenstermacher/dotfiles/)
-- developed on arm64 architecture
 
 ## zsh
 
@@ -14,6 +13,8 @@
     - [theme](https://github.com/romkatv/powerlevel10k)
 
 ## HomeBrew
+
+- running on arm64
 
 ### These are the services you'll need from home HomeBrew
 
@@ -75,4 +76,4 @@
 
 ## TODO
 
-- still need to figure out what all the dendencies are. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependies in one full sweep
+- still need to figure out what all the dependencies are. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
