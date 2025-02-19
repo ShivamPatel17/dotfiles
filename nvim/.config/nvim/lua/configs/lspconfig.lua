@@ -1,3 +1,7 @@
+-- NOTE
+-- if the lsp isn't started from opening a file, force the LSP to set up with
+-- `:Lazy load nvim-lspconfig`
+
 -- Load default configurations from NvChad
 require("nvchad.configs.lspconfig").defaults()
 
