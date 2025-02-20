@@ -11,6 +11,7 @@ return {
           lua = { "stylua" },
           go = { "gofmt" },
           markdown = { "prettier" },
+          json = { "prettier" },
           zsh = { "beautysh" },
           bash = { "beautysh" },
           sh = { "beautysh" },
