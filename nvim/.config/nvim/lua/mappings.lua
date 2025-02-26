@@ -54,3 +54,6 @@ map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagno
 
 -- Telescope
 vim.keymap.set("n", "<leader>tsh", "<cmd>ToggleGrepHidden<CR>", { desc = "Toggle Grep Hidden Files" })
+
+-- running lua
+vim.keymap.set("n", "<leader><leader>n", ":source %<CR>", { desc = "Run Lua with source %" })
