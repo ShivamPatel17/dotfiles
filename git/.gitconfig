@@ -1,8 +1,24 @@
-# Run these manually until you figure out how to get this to work in the config
-
-# git config --global rerere.enabled true
 [user]
 	name = "Shivam"
+	email = =
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
+	mnemonicPrefix = true
+[push]
+	default = simple
+	autoSetupRemove = true
+[commit]
+	verbose = true
+[init]
+	defaultBranch = main
 [alias]
   branch-name = !git rev-parse --abbrev-ref HEAD
   publish = !git push -u origin $(git branch-name)
@@ -21,10 +37,7 @@
   lg = log --oneline --graph --decorate # View Git log in one-line format
   trim = remote prune origin
   org = "!git fetch origin && git reset --hard origin/$(git branch --show-current)" # reset to origin
-  
 [pager]
 	branch = false
 [core]
 	editor = nvim
-[init]
-	defaultBranch = main
