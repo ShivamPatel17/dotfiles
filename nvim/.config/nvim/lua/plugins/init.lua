@@ -18,6 +18,8 @@ return {
 
   { import = "plugins.nvim_tree" },
 
+  { import = "plugins.trouble" },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
