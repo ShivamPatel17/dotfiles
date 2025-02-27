@@ -20,6 +20,8 @@ return {
 
   { import = "plugins.trouble" },
 
+  { import = "plugins.godoc" },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
