@@ -9,7 +9,7 @@ local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- List of servers to set up with default configuration
-local servers = { "html", "cssls", "gopls", "solargraph", "bufls" } -- Add gopls for Go
+local servers = { "html", "cssls", "gopls", "solargraph", "protols" } -- Add gopls for Go
 
 -- Set up each server with NvChad defaults
 for _, lsp in ipairs(servers) do
@@ -71,12 +71,11 @@ lspconfig.terraformls.setup {
   filetypes = { "terraform", "tf" },
 }
 
--- configruation for buf_ls. Note, this lsp only supports go to def.. and the project is deprecated. https://buf.build/blog/introducing-the-buf-language-server
-lspconfig.buf_ls.setup {
-  cmd = { vim.fn.stdpath "data" .. "/mason/bin/bufls", "serve" }, -- Use Mason's installed bufls
+-- configruation for protols https://github.com/mason-org/mason-registry/pull/6219
+-- https://github.com/coder3101/protols
+lspconfig.protols.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   filetypes = { "proto" },
-  root_dir = lspconfig.util.root_pattern("buf.yaml", "buf.gen.yaml", ".git"),
 }
