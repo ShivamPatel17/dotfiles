@@ -4,7 +4,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>cf", ":lua require'telescope.builtin'.command_history{}<CR>", { desc = "fzf vim command" })
 map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
