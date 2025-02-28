@@ -16,6 +16,7 @@ return {
           bash = { "beautysh" },
           sh = { "beautysh" },
           hcl = { "hclfmt" },
+          sql = { "sqlfmt" },
         },
         format_on_save = {
           enabled = true,

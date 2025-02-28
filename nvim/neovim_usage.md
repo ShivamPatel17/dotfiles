@@ -18,6 +18,12 @@ This file contains information about specific shortcuts/commands to use in neovi
 - `:Telescope diagnostics` to see all diagnostics in a buffer
 - `:Telescope keymaps` to see all keymaps in neovim
 
+## NvimTree
+
+- `y` to yank file name
+- `Y` to file name relative to project root
+- `gy` to to yank full path
+
 ## Themes
 
 - :Telescope themes
