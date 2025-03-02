@@ -21,3 +21,5 @@ bdf() {
     # Using -z ensures filenames are correctly passed to fzf --read0 and xargs -0.
     git diff --name-only --relative --diff-filter=dAM -z | fzf $fzf_flags --read0 | xargs bat --diff
 }
+
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
