@@ -33,6 +33,7 @@
 - [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
 - brew install lazygit
 - brew install envchain
+- brew install eza
 
 #### tmux
 
@@ -77,6 +78,10 @@
 
 - use the FontBook app to downloand and install whatever font you want
   - whenever you install a new font, clear the cache with `fc-cache -fv`
+
+#### Cli Tools
+
+- [eza](https://github.com/eza-community/eza): drop in replacement for `ls`
 
 ## TODO
 
