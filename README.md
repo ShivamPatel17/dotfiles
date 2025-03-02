@@ -82,7 +82,8 @@
 #### Cli Tools
 
 - [eza](https://github.com/eza-community/eza): drop in replacement for `ls`
+- [bat](https://github.com/sharkdp/bat): a better `cat`
 
 ## TODO
 
-- still need to figure out what all the dependencies are. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
+- still need to figure out all the dependencies for my set up. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
