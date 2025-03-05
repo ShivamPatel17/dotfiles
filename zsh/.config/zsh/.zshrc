@@ -12,7 +12,15 @@
 # might consider creating another file to export ZSHELRCS
 # and gitignore it
 export ZSHELLRCS="$HOME/Repos/dotfiles/zsh/.config/zsh/zshrcs"
-SAVEHIST=50000
+
+HIST_SIZE=50000
+SAVEHIST=$HIST_SIZE
+HIST_DUP=erase
+setopt appendhistory 
+setopt sharehistory 
+setopt hist_ignore_space 
+setopt hist_ignore_all_dups 
+setopt hist_save_no_dups
 
 
 # Homebrew path (ensure it's correctly set)
