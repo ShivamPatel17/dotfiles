@@ -7,6 +7,7 @@
 
 ## Things to know about my nvim set up
 
+- [lazy.nvim](https://github.com/folke/lazy.nvim) - plugin manager
 - [folke snacks](https://github.com/folke/snacks.nvim)
   - the **nvim.snacks** plugin will look for a lazygit config file which apparently is not created by default so you'll want to create one there
   - [lazygit](https://github.com/jesseduffield/lazygit) - great git terminal ui - the snacks lazygit plugin wraps the lazygit project
@@ -20,6 +21,18 @@
   - live grep
 - [lspconfig](../nvim/.config/nvim/lua/configs/lspconfig.lua) for autocompletes, go to definition, etc.
 - [lazygit](https://github.com/jesseduffield/lazygit) for git UI. I mostly use git cli, but this is useful for viewing diffs & file history
+
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+- you can find the config in `~/.local/share/nvim/`
+- lazy gets loaded up by this line `require("lazy").setup "plugins"`
+  - Neovim is doing the following:
+    - It looks for lazy.nvim in the runtime path.
+      - Since NvChad automatically adds lazy.nvim to runtimepath, the require("lazy") statement works.
+      - You can verify this by running in Neovim: `echo nvim_list_runtime_paths()`
+        - This will show a list of paths where Neovim looks for plugins, including lazy.nvim.
+    - It calls the setup function from lazy.nvim.
+      - The argument "plugins" refers to a Lua module that should be defined as:
 
 ## Cool features from my workflow
 

@@ -1,6 +1,15 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" }, -- Ensure plenary.nvim is installed
+  keys = {
+    {
+      "<leader>fg", -- load this as a key, that way I can trigger multigrep before Telescope is lazy loaded
+      function()
+        require("custom.telescope.multigrep").live_multigrep()
+      end,
+      desc = "telescope multi Grep",
+    },
+  },
   config = function()
     -- Initialize the global variable to false if not already set
     vim.g.telescope_grep_hidden = vim.g.telescope_grep_hidden or true
