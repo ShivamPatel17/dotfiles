@@ -33,6 +33,14 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # add the executables you've got in the bin folder
 export PATH=$HOME/.config/bin:$PATH
 
+# Ensure Oh My Zsh is only sourced once. The reason for this is because reloading it again causes the zsh-vi-mode to not work for some reason
+if [[ "$ZSH_SESSION_ID" != "$$" ]]; then
+    export ZSH_SESSION_ID=$$
+    if [ -f "${ZSHELLRCS}/../.oh-my-zsh.zshrc" ]; then
+        source "${ZSHELLRCS}/../.oh-my-zsh.zshrc"
+    fi
+fi
+
 # Define the ZSHELLRCS directory
 # Recursively source all regular files in ZSHELLRCS
 if [ -d "${ZSHELLRCS}" ]; then
@@ -43,13 +51,6 @@ else
     echo "Directory ${ZSHELLRCS} does not exist"
 fi
 
-# Ensure Oh My Zsh is only sourced once. The reason for this is because reloading it again causes the zsh-vi-mode to not work for some reason
-if [[ "$ZSH_SESSION_ID" != "$$" ]]; then
-    export ZSH_SESSION_ID=$$
-    if [ -f "${ZSHELLRCS}/../.oh-my-zsh.zshrc" ]; then
-        source "${ZSHELLRCS}/../.oh-my-zsh.zshrc"
-    fi
-fi
 
 # Ensure the FZF backsearch is loaded last
 if [ -f "${ZSHELLRCS}/../.fzf.zshrc" ]; then
