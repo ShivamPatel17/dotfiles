@@ -52,9 +52,3 @@ map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { desc = "Navigate to the Top Pane"
 --
 -- Diagnostics
 map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
-
--- Telescope
-vim.keymap.set("n", "<leader>tsh", "<cmd>ToggleGrepHidden<CR>", { desc = "Toggle Grep Hidden Files" })
-
--- running lua
-vim.keymap.set("n", "<leader><leader>n", ":source %<CR>", { desc = "Run Lua with source %" })

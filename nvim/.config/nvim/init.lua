@@ -6,7 +6,8 @@ require "custom.autocmds"
 
 require "custom.treesitter"
 
-require "custom.telescope"
+require "custom.telescope.user_commands"
+require "custom.run_languages"
 
 -- load plugins
 require("lazy").setup "plugins"
