@@ -20,6 +20,7 @@ This file contains information about specific shortcuts/commands to use in neovi
 
 ## NvimTree
 
+- [full list of nvimtree commands](https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt)
 - `y` to yank file name
 - `Y` to file name relative to project root
 - `gy` to to yank full path
