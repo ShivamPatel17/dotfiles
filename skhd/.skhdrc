@@ -3,6 +3,9 @@
 # SKHD - https://github.com/koekeishiya/skhd/tree/master
 # To update any of these config, make the changes here and restart the skhd process with
 # skhd --restart-service
+#
+#
+# note: might need to run a `skhd &` to kick of skhd on a restart.. should probably get this going automatically at some point
 
 # App shortcuts 
 alt - c : open -a 'Google Chrome'

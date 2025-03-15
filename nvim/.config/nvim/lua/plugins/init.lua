@@ -5,42 +5,20 @@ return {
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
-  { import = "plugins.telescope" },
-
-  { import = "plugins.snacks" },
-
   { import = "plugins.conform" },
-
-  { import = "plugins.dad_bod" },
-
   { import = "plugins.csv" },
-
-  { import = "plugins.nvim_tree" },
-
-  { import = "plugins.trouble" },
-
+  { import = "plugins.dad_bod" },
   { import = "plugins.godoc" },
-
+  { import = "plugins.nvim_tree" },
+  { import = "plugins.telescope" },
+  { import = "plugins.treesitter" },
+  { import = "plugins.trouble" },
+  { import = "plugins.snacks" },
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-      },
-    },
   },
 
   {

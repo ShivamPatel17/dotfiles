@@ -17,6 +17,7 @@ This file contains information about specific shortcuts/commands to use in neovi
 
 - `:Telescope diagnostics` to see all diagnostics in a buffer
 - `:Telescope keymaps` to see all keymaps in neovim
+- `:Telescope commands` to see all available built-in and user Commands in neovim
 
 ## NvimTree
 
