@@ -1,10 +1,5 @@
 return {
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
+  { import = "plugins.nvchad" },
   { import = "plugins.conform" },
   { import = "plugins.csv" },
   { import = "plugins.dad_bod" },
