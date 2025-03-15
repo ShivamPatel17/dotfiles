@@ -1,7 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-    -- and add more langauges here
     ensure_installed = {
       "go",
       "bash",
