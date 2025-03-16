@@ -11,4 +11,5 @@ return {
   { import = "plugins.treesitter" },
   { import = "plugins.trouble" },
   { import = "plugins.snacks" },
+  { import = "plugins.surround" },
 }
