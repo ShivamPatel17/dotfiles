@@ -1,16 +1,6 @@
 # GUIDE
 # symlink your shells .zshrc (probably ~/.zshrc) to this file
 
-# More todos
-#
-# oh-my-zsh uses some custom plugins. Clone these plugin in the .oh-my-zsh.zshrc if they don't already exist
-# - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-
-# on a new computer, if you don't clone this repo to ~
-# might consider creating another file to export ZSHELRCS
-# and gitignore it
 export ZSHELLRCS="$HOME/Repos/dotfiles/zsh/.config/zsh/zshrcs"
 
 HIST_SIZE=50000
@@ -42,10 +32,3 @@ if [ -d "${ZSHELLRCS}" ]; then
 else
     echo "Directory ${ZSHELLRCS} does not exist"
 fi
-
-
-# Ensure the FZF backsearch is loaded last
-if [ -f "${ZSHELLRCS}/../.fzf.zshrc" ]; then
-    source "${ZSHELLRCS}/../.fzf.zshrc"
-fi
-
