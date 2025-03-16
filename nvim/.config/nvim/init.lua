@@ -14,6 +14,7 @@ require "custom.run_languages"
 -- file specific
 require "custom.file_specific.lua"
 require "custom.file_specific.markdown"
+require "custom.file_specific.sql"
 
 -- load plugins
 require("lazy").setup "plugins"

@@ -4,7 +4,7 @@
 
 ## zsh
 
-- plugins are manually downloaded and sourced. See [./zsh/.config/zsh/zshrcs/zsh_plugins.zsh]
+- [plugins are manually downloaded and sourced](./zsh/.config/zsh/zshrcs/zsh_plugins.zsh)
 
 ## HomeBrew
 
