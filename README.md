@@ -4,13 +4,7 @@
 
 ## zsh
 
-- plugin manager:
-
-  - [oh-my-zsh](https://ohmyz.sh/)
-    - custom plugins I like:
-      - [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
-      - [auto suggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - [theme](https://github.com/romkatv/powerlevel10k)
+- plugins are manually downloaded and sourced. See [./zsh/.config/zsh/zshrcs/zsh_plugins.zsh]
 
 ## HomeBrew
 

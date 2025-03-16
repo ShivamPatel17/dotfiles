@@ -1,6 +1,3 @@
-# General
-alias reload="source ~/.config/zsh/.zshrc"
-
 # git aliases
 alias g='git'
 alias fza="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
