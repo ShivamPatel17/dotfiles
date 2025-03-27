@@ -13,7 +13,6 @@
 
 ### Tools to download from HomeBrew
 
-- brew install asdf
 - brew install rg
 - brew install neovim
 - brew install fzf
@@ -47,10 +46,6 @@
   - there's a `make stow` to stow everything and `make unstow` to remove the symlinks
     - you can manually stow each of these folders to the home directory
       - git, nvim, psql, skhd, tmux, and zsh can all be stowed
-
-#### asdf
-
-- runtime version manager
 
 #### aerospace
 
