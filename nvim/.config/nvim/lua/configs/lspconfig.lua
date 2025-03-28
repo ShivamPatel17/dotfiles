@@ -42,7 +42,7 @@ lspconfig.gopls.setup {
 
 -- Configure Solargraph
 lspconfig.solargraph.setup {
-  cmd = { "/Users/shivampatel/.asdf/shims/solargraph", "stdio" },
+  cmd = { "/Users/shivampatel/.asdf/shims/solargraph", "stdio" }, -- todo, swap out for mise
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,

@@ -13,6 +13,7 @@
 
 ### Tools to download from HomeBrew
 
+- brew install mise
 - brew install rg
 - brew install neovim
 - brew install fzf
@@ -27,6 +28,10 @@
 - brew install lazygit
 - brew install envchain
 - brew install eza
+
+#### [Mise](https://mise.jdx.dev/)
+
+- for dev tools and environment management
 
 #### tmux
 
