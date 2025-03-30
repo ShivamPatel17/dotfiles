@@ -52,3 +52,7 @@ map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { desc = "Navigate to the Top Pane"
 --
 -- Diagnostics
 map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
+
+map("v", "<leader>r", "<Plug>SnipRun", { silent = true })
+map("n", "<leader>r", "<Plug>SnipRun", { silent = true })
+map("n", "<leader>rc", "<Plug>SnipClose", { silent = true })
