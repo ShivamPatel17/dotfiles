@@ -79,3 +79,28 @@ lspconfig.protols.setup {
   capabilities = nvlsp.capabilities,
   filetypes = { "proto" },
 }
+
+lspconfig.ruff_lsp.setup {
+  on_attach = nvlsp.on_attach, -- If you have a custom on_attach
+  on_init = nvlsp.on_init, -- If you have a custom on_init
+  capabilities = nvlsp.capabilities, -- If you have custom capabilities
+  filetypes = { "python" },
+  settings = {
+    -- Ruff-specific settings (optional)
+  },
+}
+
+-- lspconfig.pylsp.setup {
+--   on_attach = nvlsp.on_attach, -- If you have a custom on_attach
+--   on_init = nvlsp.on_init,   -- If you have a custom on_init
+--   capabilities = nvlsp.capabilities, -- If you have custom capabilities
+--   filetypes = { "python" },
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         ruff = { enabled = true },
+--         -- Other plugins (optional)
+--       },
+--     },
+--   },
+-- }
