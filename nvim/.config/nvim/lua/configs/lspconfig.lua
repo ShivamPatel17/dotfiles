@@ -80,27 +80,25 @@ lspconfig.protols.setup {
   filetypes = { "proto" },
 }
 
-lspconfig.ruff_lsp.setup {
+lspconfig.pylsp.setup {
   on_attach = nvlsp.on_attach, -- If you have a custom on_attach
   on_init = nvlsp.on_init, -- If you have a custom on_init
   capabilities = nvlsp.capabilities, -- If you have custom capabilities
   filetypes = { "python" },
   settings = {
-    -- Ruff-specific settings (optional)
+    pylsp = {
+      plugins = {
+        ruff = { enabled = true },
+        -- Other plugins (optional)
+        pycodestyle = {
+          ignore = { "E501" },
+        },
+        mypy = {
+          enabled = true,
+          live_mode = false, -- or true, depending on your preference.
+          args = { "--follow-imports=silent", "--ignore-missing-imports" }, -- Optional mypy arguments
+        },
+      },
+    },
   },
 }
-
--- lspconfig.pylsp.setup {
---   on_attach = nvlsp.on_attach, -- If you have a custom on_attach
---   on_init = nvlsp.on_init,   -- If you have a custom on_init
---   capabilities = nvlsp.capabilities, -- If you have custom capabilities
---   filetypes = { "python" },
---   settings = {
---     pylsp = {
---       plugins = {
---         ruff = { enabled = true },
---         -- Other plugins (optional)
---       },
---     },
---   },
--- }

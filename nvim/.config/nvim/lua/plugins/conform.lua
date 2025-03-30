@@ -17,7 +17,6 @@ return {
           sh = { "beautysh" },
           hcl = { "hclfmt" },
           proto = { "buf" },
-          -- sql = { "sqlfmt" },
         },
         format_on_save = {
           enabled = true,
