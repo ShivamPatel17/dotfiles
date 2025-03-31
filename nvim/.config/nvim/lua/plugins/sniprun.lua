@@ -12,8 +12,10 @@ return {
       binary_path = "sniprun",
       -- your options
       repl_enable = {
-        "Python3_original", -- https://michaelb.github.io/sniprun/sources/interpreters/Python3_original.html
+        -- "Python3_original", -- https://michaelb.github.io/sniprun/sources/interpreters/Python3_original.html
+        "Python3_fifo",
       }, -- Enable REPL mode for Python
+      selected_interpreters = { "Python3_fifo" },
       live_display = { "VirtualText" }, --# display mode used in live_mode
       live_mode_toggle = "enable", --# live mode toggle, see Usage - Running for more info - need to run :SnipLive to even enable it
     }
