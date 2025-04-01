@@ -56,3 +56,6 @@ map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagno
 map("v", "<leader>r", "<Plug>SnipRun", { silent = true })
 map("n", "<leader>r", "<Plug>SnipRun", { silent = true })
 map("n", "<leader>rc", "<Plug>SnipClose", { silent = true })
+
+-- LSP
+map("n", "gb", "<C-o>", { desc = "LSP Go back" })
