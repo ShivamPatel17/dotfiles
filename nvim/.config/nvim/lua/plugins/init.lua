@@ -2,6 +2,7 @@ return {
   { import = "plugins.nvchad" },
   { import = "plugins.conform" },
   { import = "plugins.csv" },
+  { import = "plugins.csvview" },
   { import = "plugins.dad_bod" },
   { import = "plugins.godoc" },
   { import = "plugins.nvim_lspconfig" },
