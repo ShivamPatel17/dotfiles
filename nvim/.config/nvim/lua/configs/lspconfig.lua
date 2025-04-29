@@ -42,7 +42,6 @@ lspconfig.gopls.setup {
 
 -- Configure Solargraph
 lspconfig.solargraph.setup {
-  cmd = { "/Users/shivampatel/.asdf/shims/solargraph", "stdio" }, -- todo, swap out for mise
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
@@ -91,7 +90,11 @@ lspconfig.pylsp.setup {
         ruff = { enabled = true },
         -- Other plugins (optional)
         pycodestyle = {
-          ignore = { "E501" },
+          ignore = {
+            "E501",
+            "W503", -- line break before every binary operator
+            "E203", -- whitespace before :
+          },
         },
         mypy = {
           enabled = true,
@@ -99,6 +102,19 @@ lspconfig.pylsp.setup {
           args = { "--follow-imports=silent", "--ignore-missing-imports" }, -- Optional mypy arguments
         },
       },
+    },
+  },
+}
+
+lspconfig.ruff.setup {
+  on_attach = nvlsp.on_attach, -- If you have a custom on_attach
+  on_init = nvlsp.on_init, -- If you have a custom on_init
+  capabilities = nvlsp.capabilities, -- If you have custom capabilities
+  filetypes = { "python" },
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
     },
   },
 }

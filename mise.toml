@@ -1,3 +1,4 @@
 [tools]
 cargo = "latest"
+lua = "latest"
 rust = "latest"

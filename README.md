@@ -78,6 +78,10 @@
 - [eza](https://github.com/eza-community/eza): drop in replacement for `ls`
 - [bat](https://github.com/sharkdp/bat): a better `cat`
 
+# HINTS
+
+- `<leader>wK` to see which key binding are available to you wherever your cursor currently is. Works for regular buffers, nvimtree, and probably more!
+
 ## TODO
 
 - still need to figure out all the dependencies for my set up. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
