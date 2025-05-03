@@ -1,1 +1,0 @@
-https://chat.openai.com/
