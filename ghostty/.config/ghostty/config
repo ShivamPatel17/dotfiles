@@ -2,3 +2,5 @@ background-opacity = 0.5
 background-blur = true
 font-family = "JetBrainsMono Nerd Font"
 
+keybind = super+alt+shift+j=unbind
+

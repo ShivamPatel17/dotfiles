@@ -1,5 +1,12 @@
 require "nvchad.mappings"
 
+-- some notes on mappings
+-- M: meta key (depends on keyboard apparently)
+-- D: command key
+-- A: alt
+-- S: shift
+--
+-- <M-K> is the same as <M-S-k>
 -- add yours here
 
 local map = vim.keymap.set
@@ -28,10 +35,10 @@ map("n", "<leader>sc", "<C-w>c", { desc = "Close Split" }) -- Close the current 
 map("n", "<leader>so", "<C-w>o", { desc = "Close OtherSplits" }) -- Close all splits except the current one
 
 -- Adjust buffer size
-map("n", "<M-S-k>", ":resize +2<CR>", { desc = "Increase Buffer Height" }) -- Increase buffer height (have to hit ALT+CMD+SHIFT+K).. not sure why this works, but it does.. the Telescope Key map is <M-K>
-map("n", "<M-S-h>", ":vertical resize -2<CR>", { desc = "Decrease Buffer Width" }) -- Decrease buffer width
-map("n", "<M-S-l>", ":vertical resize +2<CR>", { desc = "Increase Buffer Width" }) -- Increase buffer width
-map("n", "<M-S-n>", ":resize -2<CR>", { desc = "Decrease Buffer Height" }) -- Decrease buffer height (somehow <M-S-j> isn't working.. :/ )
+map("n", "<M-K>", ":resize +2<CR>", { desc = "Increase Buffer Height" }) -- Increase buffer height
+map("n", "<M-H>", ":vertical resize -2<CR>", { desc = "Decrease Buffer Width" }) -- Decrease buffer width
+map("n", "<M-L>", ":vertical resize +2<CR>", { desc = "Increase Buffer Width" }) -- Increase buffer width
+map("n", "<M-J>", ":resize -2<CR>", { desc = "Decrease Buffer Height" }) -- Decrease buffer height
 
 -- Close all other buffers
 map("n", "<leader>ba", ":%bd|e#<CR>", { desc = "Close All Other Buffers" }) -- Close all buffers except most recent
