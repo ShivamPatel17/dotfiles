@@ -6,7 +6,7 @@ local map = vim.keymap.set
 map("i", "jk", "<ESC>")
 
 -- vim command history
-map("n", "<leader>cf", ":lua require'telescope.builtin'.command_history{}<CR>", { desc = "fzf vim command" })
+map("n", "<leader>cf", ":lua require'telescope.builtin'.command_history{}<CR>", { desc = "fzf vim command history" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
