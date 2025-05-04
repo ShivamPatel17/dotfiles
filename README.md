@@ -81,6 +81,7 @@
 # HINTS
 
 - `<leader>wK` to see which key binding are available to you wherever your cursor currently is. Works for regular buffers, nvimtree, and probably more!
+- `:set virtualedit=` to prevent the cursor from going past the end of the text
 
 ## TODO
 

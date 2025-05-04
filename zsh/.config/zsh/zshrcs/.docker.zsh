@@ -25,3 +25,16 @@ nukedocker() {
 
     echo "Docker cleanup complete!"
 }
+
+docker_reset() {
+    if [ -n "$(docker ps -q)" ]; then
+        echo "Stopping containers..."
+        docker stop -t 30 $(docker ps -q)
+    fi
+    docker system prune -a -f --volumes
+    echo "Waiting for 'docker system prune' to settle..."
+    if [ -n "$(docker volume ls -q)" ]; then
+        echo "Removing remaining volumes..."
+        docker volume rm $(docker volume ls -q) 2>/dev/null || true
+    fi
+}
