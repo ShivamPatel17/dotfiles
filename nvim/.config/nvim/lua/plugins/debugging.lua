@@ -10,7 +10,41 @@ return {
     local dapui = require "dapui"
     local dapgo = require "dap-go"
 
-    dapgo.setup()
+    dap.set_log_level "TRACE"
+
+    dapgo.setup {
+      dap_configurations = {
+        {
+          type = "go",
+          name = "Shivam Attach remote",
+          mode = "remote",
+          request = "attach",
+          remotePath = "/app",
+          connect = {
+            host = "127.0.0.1",
+            port = "2345",
+          },
+          -- https://go.googlesource.com/vscode-go/+/c3516da303907ca11ee51e64f961cf2a4ac5339a/docs/dlv-dap.md
+          substitutePath = {
+            { from = "/Users/shivampatel/Repos/ledger/", to = "/app" },
+          },
+        },
+      },
+      delve = {
+        port = "2345",
+        -- additional args to pass to dlv
+        args = {},
+        -- such as "-tags=unit" to make sure the test suite is
+        -- compiled during debugging, for example.
+        -- passing build flags using args is ineffective, as those are
+        -- ignored by delve in dap mode.
+        -- avaliable ui interactive function to prompt for arguments get_arguments
+        build_flags = {},
+        -- the current working directory to run dlv from, if other than
+        -- the current working directory.
+        cwd = nil,
+      },
+    }
     dapui.setup()
 
     dap.listeners.before.attach.dapui_config = function()
