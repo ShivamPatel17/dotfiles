@@ -10,9 +10,18 @@ return {
     local dapui = require "dapui"
     local dapgo = require "dap-go"
 
-    dap.set_log_level "TRACE"
+    -- The log file is in the |stdpath| `cache` folder.
+    -- To print the location:  >
+    --
+    --     :lua print(vim.fn.stdpath('cache'))
+    --
+    dap.set_log_level "INFO"
 
+    -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
+    -- so I guess these configurations like substitutePath are interpretted in dlv perhaps
+    -- https://github.com/go-delve/delve/blob/master/Documentation/cli/substitutepath.md#dap-server
     dapgo.setup {
+      -- https://github.com/mfussenegger/nvim-dap/blob/8df427aeba0a06c6577dc3ab82de3076964e3b8d/doc/dap.txt#L239-L240
       dap_configurations = {
         {
           type = "go",
@@ -62,6 +71,8 @@ return {
 
     vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
+    vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Terminate Debug Session" })
+    vim.keymap.set("n", "<leader>dbt", dap.clear_breakpoints, { desc = "Clear Breakpoints" })
     vim.keymap.set("n", "<leader>da", dapui.toggle, { desc = "Toggle DapUI" })
     vim.keymap.set("n", "<leader>dso", dap.step_over, { desc = "Step Over" })
     vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "Step Into" })
