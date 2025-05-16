@@ -22,3 +22,12 @@
 - markdown
   - for all writing
 - lazygit, for visualizing git
+
+## Browswer extensions I love
+
+- [Refined github](https://github.com/refined-github/refined-github)
+- [Vimium](https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
+
+## Containers
+
+- [Orbstack](https://orbstack.dev/)
