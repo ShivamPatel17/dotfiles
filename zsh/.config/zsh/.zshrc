@@ -12,7 +12,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 
 # Define the ZSHELLRCS directory
-export ZSHELLRCS="$HOME/Repos/dotfiles/zsh/.config/zsh/zshrcs"
+export ZSHELLRCS="$HOME/repos/dotfiles/zsh/.config/zsh/zshrcs"
 
 # Recursively source all regular files in ZSHELLRCS
 if [ -d "${ZSHELLRCS}" ]; then

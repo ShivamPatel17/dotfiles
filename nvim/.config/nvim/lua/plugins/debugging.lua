@@ -9,13 +9,14 @@ return {
     local dap = require "dap"
     local dapui = require "dapui"
     local dapgo = require "dap-go"
+    local machine_specific_config = require "local.config"
 
     -- The log file is in the |stdpath| `cache` folder.
     -- To print the location:  >
     --
     --     :lua print(vim.fn.stdpath('cache'))
     --
-    dap.set_log_level "INFO"
+    dap.set_log_level "DEBUG"
 
     -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
     -- so I guess these configurations like substitutePath are interpretted in dlv perhaps
@@ -25,33 +26,47 @@ return {
       dap_configurations = {
         {
           type = "go",
-          name = "Shivam Attach remote",
+          name = "Attach Web",
           mode = "remote",
           request = "attach",
-          remotePath = "/app",
+          remotePath = machine_specific_config.debug_path_replacement,
+          port = 2345,
           connect = {
             host = "127.0.0.1",
             port = "2345",
           },
           -- https://go.googlesource.com/vscode-go/+/c3516da303907ca11ee51e64f961cf2a4ac5339a/docs/dlv-dap.md
           substitutePath = {
-            { from = "/Users/shivampatel/Repos/ledger/", to = "/app" },
+            { from = machine_specific_config.debug_local_path, to = machine_specific_config.debug_path_replacement },
           },
         },
-      },
-      delve = {
-        port = "2345",
-        -- additional args to pass to dlv
-        args = {},
-        -- such as "-tags=unit" to make sure the test suite is
-        -- compiled during debugging, for example.
-        -- passing build flags using args is ineffective, as those are
-        -- ignored by delve in dap mode.
-        -- avaliable ui interactive function to prompt for arguments get_arguments
-        build_flags = {},
-        -- the current working directory to run dlv from, if other than
-        -- the current working directory.
-        cwd = nil,
+        {
+          type = "go",
+          name = "Attach Docker Test",
+          mode = "remote",
+          request = "attach",
+          remotePath = "/app",
+          port = 2346,
+          connect = {
+            host = "127.0.0.1",
+            port = "2346",
+          },
+          -- https://go.googlesource.com/vscode-go/+/c3516da303907ca11ee51e64f961cf2a4ac5339a/docs/dlv-dap.md
+          substitutePath = {
+            { from = machine_specific_config.debug_local_path, to = machine_specific_config.debug_path_replacement },
+          },
+        },
+        {
+          type = "go",
+          name = "Attach Local",
+          mode = "remote",
+          request = "attach",
+          remotePath = machine_specific_config.debug_path_replacement,
+          connect = {
+            host = "127.0.0.1",
+            port = "2345",
+          },
+        },
       },
     }
     dapui.setup()
