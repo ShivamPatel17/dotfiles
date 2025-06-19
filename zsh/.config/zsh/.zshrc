@@ -27,4 +27,5 @@ add_path "/opt/homebrew/bin"
 add_path "$HOME/bin"
 add_path "$HOME/.config/bin"
 add_path "/usr/local/bin"
+add_path "~/.local/bin"
 
