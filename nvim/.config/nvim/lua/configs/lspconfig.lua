@@ -118,3 +118,21 @@ lspconfig.ruff.setup {
     },
   },
 }
+
+lspconfig.pyright.setup {
+  on_attach = nvlsp.on_attach, -- If you have a custom on_attach
+  on_init = nvlsp.on_init, -- If you have a custom on_init
+  capabilities = nvlsp.capabilities, -- If you have custom capabilities
+  filetypes = { "python" },
+  init_options = {
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "basic", -- or "off", "strict"
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  },
+}
