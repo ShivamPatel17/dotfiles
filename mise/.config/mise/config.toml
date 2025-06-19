@@ -2,4 +2,5 @@
 cargo = "latest"
 go = "latest"
 lua = "latest"
+python = "latest"
 rust = "latest"
