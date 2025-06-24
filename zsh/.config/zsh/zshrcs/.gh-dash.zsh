@@ -1,0 +1,1 @@
+alias ghd="gh dash"
