@@ -3,6 +3,24 @@ bda() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
+bdm() {
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    if [ "$current_branch" = "main" ]; then
+        echo "already on main"
+        return 1
+    fi
+
+    if ! git rev-parse --verify main &>/dev/null; then
+        echo "Error: 'main' branch not found locally."
+        return 1
+    fi
+
+    # This command will output the full diff (all types of changes)
+    # The 'main...' syntax compares the common ancestor of main and current_branch to current_branch
+    git diff --relative main..."${current_branch}" | bat -l=diff
+}
+
 
 # this uses fzf to select files to pass to bat diff
 bdf() {
