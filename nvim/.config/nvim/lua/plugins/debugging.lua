@@ -16,7 +16,8 @@ return {
     --
     --     :lua print(vim.fn.stdpath('cache'))
     --
-    dap.set_log_level "DEBUG"
+
+    -- dap.set_log_level "DEBUG"
 
     -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
     -- so I guess these configurations like substitutePath are interpretted in dlv perhaps

@@ -9,7 +9,7 @@ return {
         fillchars = "eob: ",
         list = false,
         number = false,
-        relativenumber = false,
+        relativenumber = true,
         signcolumn = "no",
         spell = false,
         winbar = "",

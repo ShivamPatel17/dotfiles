@@ -52,3 +52,29 @@ vim.api.nvim_create_autocmd({ "FocusGained", "WinEnter" }, {
     highlight_word()
   end,
 })
+
+-- Define a user command to toggle Copilot
+vim.api.nvim_create_user_command("ToggleCopilot", function()
+  -- Check the current state of Copilot
+  -- copilot#Enabled() is a Vimscript function exposed by copilot.vim
+  local is_enabled = vim.fn["copilot#Enabled"]()
+
+  if is_enabled == 1 then
+    vim.cmd "Copilot disable"
+    print "Copilot: Disabled"
+  else
+    vim.cmd "Copilot enable"
+    print "Copilot: Enabled"
+  end
+end, {
+  -- This command takes no arguments
+  nargs = 0,
+  -- Provide a description for tools like which-key
+  desc = "Toggle GitHub Copilot",
+})
+
+-- Map <leader>co to the ToggleCopilot command in Normal mode
+vim.keymap.set("n", "<leader>co", ":ToggleCopilot<CR>", {
+  silent = true,
+  desc = "Toggle GitHub Copilot",
+})
