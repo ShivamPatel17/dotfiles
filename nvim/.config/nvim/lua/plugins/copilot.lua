@@ -11,6 +11,10 @@ return {
         expr = true,
         replace_keycodes = false,
       })
+      vim.keymap.set("i", "<C-W>", "<Plug>(copilot-accept-word)", {
+        silent = true,
+        desc = "Accept next Copilot word",
+      })
       vim.g.copilot_no_tab_map = true
       vim.g.copilot_enabled = false
     end,
