@@ -2,6 +2,18 @@ background-opacity = 0.8
 background-blur = true
 font-family = "JetBrainsMono Nerd Font"
 
+
 keybind = super+alt+shift+j=unbind
+
+# cmd+l -> tmux last-session
 keybind = super+l=text:\x01\x4c
+
+# cmd+f -> tmux search up in pane
 keybind = super+f=text:\x01\x5b\x3f\x0a
+
+# cmd+digit -> tmux switch windows
+keybind = super+1=text:\x01\x31
+keybind = super+2=text:\x01\x32
+keybind = super+3=text:\x01\x33
+keybind = super+4=text:\x01\x34
+keybind = super+5=text:\x01\x35
