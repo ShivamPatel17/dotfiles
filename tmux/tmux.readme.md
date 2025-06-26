@@ -75,3 +75,9 @@ set -g @continuum-restore 'on' # enable tmux-continuum functionality
 
 - the .tmux.conf has some keybinding updates
 - the plugins there help you switch between tmux panes and nvim panes
+
+### Ghostty with Tmux
+
+- the Ghostty configs allow you to remap some keys to make tmux commands easier
+  - check out [this article](https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/)
+  - `xxd -psd` to print out keystrokes' hex values
