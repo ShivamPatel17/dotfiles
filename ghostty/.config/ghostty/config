@@ -3,4 +3,5 @@ background-blur = true
 font-family = "JetBrainsMono Nerd Font"
 
 keybind = super+alt+shift+j=unbind
-
+keybind = super+l=text:\x01\x4c
+keybind = super+f=text:\x01\x5b\x3f\x0a
