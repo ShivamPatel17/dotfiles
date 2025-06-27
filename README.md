@@ -28,6 +28,7 @@
 - brew install lazygit
 - brew install envchain
 - brew install eza
+- [brew install sesh](https://github.com/joshmedeski/sesh)
 
 #### [Mise](https://mise.jdx.dev/)
 

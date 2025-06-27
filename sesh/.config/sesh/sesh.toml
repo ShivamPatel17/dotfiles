@@ -1,0 +1,10 @@
+sort_order = [
+    "tmux", # show first
+    "zoxide",  
+    "config",
+    "tmuxinator", # show last
+]
+
+[default_session]
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"
