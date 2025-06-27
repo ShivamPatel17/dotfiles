@@ -1,6 +1,6 @@
 [tools]
 cargo = "latest"
-lua = "latest"
+lua = "5.1"
 node = "latest"
 python = "latest"
 rust = "latest"
