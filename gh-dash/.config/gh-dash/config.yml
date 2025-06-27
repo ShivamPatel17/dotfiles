@@ -75,7 +75,7 @@ theme:
       showSeparator: true
       compact: false
 pager:
-  diff:  bat -l=go
+  diff: ""
 confirmQuit: true
 showAuthorIcons: true
 smartFilteringAtLaunch: true
