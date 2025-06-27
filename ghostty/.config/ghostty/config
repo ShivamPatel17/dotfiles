@@ -11,6 +11,9 @@ keybind = super+l=text:\x01\x4c
 # cmd+f -> tmux search up in pane
 keybind = super+f=text:\x01\x5b\x3f\x0a
 
+# cmd+o -> tmux cursor mode 
+keybind = super+o=text:\x01\x5b
+
 # cmd+digit -> tmux switch windows
 keybind = super+1=text:\x01\x31
 keybind = super+2=text:\x01\x32
