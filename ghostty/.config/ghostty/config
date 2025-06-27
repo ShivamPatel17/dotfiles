@@ -14,6 +14,15 @@ keybind = super+f=text:\x01\x5b\x3f\x0a
 # cmd+o -> tmux cursor mode 
 keybind = super+o=text:\x01\x5b
 
+# cmd+c -> tmux new window
+keybind = super+c=text:\x01\x63
+
+# cmd+x -> tmux delete window
+keybind = super+x=text:\x01\x78
+
+# cmd+e -> tmux swap windows
+keybind = super+x=text:\x01\x65
+
 # cmd+digit -> tmux switch windows
 keybind = super+1=text:\x01\x31
 keybind = super+2=text:\x01\x32

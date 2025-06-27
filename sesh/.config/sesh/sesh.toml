@@ -8,3 +8,8 @@ sort_order = [
 [default_session]
 startup_command = "nvim"
 preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "yazi"
