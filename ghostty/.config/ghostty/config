@@ -23,6 +23,9 @@ keybind = super+x=text:\x01\x78
 # cmd+e -> tmux swap windows
 keybind = super+x=text:\x01\x65
 
+# cmd+j -> tmux switch sessions
+keybind = super+j=text:\x01\x6a
+
 # cmd+digit -> tmux switch windows
 keybind = super+1=text:\x01\x31
 keybind = super+2=text:\x01\x32

@@ -1,7 +1,7 @@
 sort_order = [
     "tmux", # show first
-    "zoxide",  
     "config",
+    "zoxide",  
     "tmuxinator", # show last
 ]
 
