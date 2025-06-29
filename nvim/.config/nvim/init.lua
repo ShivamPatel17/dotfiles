@@ -16,6 +16,9 @@ require "custom.file_specific.lua"
 require "custom.file_specific.markdown"
 require "custom.file_specific.sql"
 
+-- machine specific
+require "local.config"
+
 -- load plugins
 require("lazy").setup "plugins"
 

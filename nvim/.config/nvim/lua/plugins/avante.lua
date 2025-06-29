@@ -11,6 +11,7 @@ return {
       end
     end,
     event = "VeryLazy",
+    enabled = not vim.g.disable_avante,
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
     ---@type avante.Config
