@@ -86,7 +86,37 @@ return {
         },
       },
     }
-    dapui.setup()
+    dapui.setup {
+      layouts = {
+        {
+          elements = {
+            {
+              id = "watches",
+              size = 0.5,
+            },
+            {
+              id = "scopes",
+              size = 0.3,
+            },
+            {
+              id = "stacks",
+              size = 0.1,
+            },
+            {
+              id = "breakpoints",
+              size = 0.1,
+            },
+          },
+          position = "right",
+          size = 40,
+        },
+        {
+          elements = {},
+          position = "bottom",
+          size = 10,
+        },
+      },
+    }
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
