@@ -41,3 +41,5 @@
 	branch = false
 [core]
 	editor = nvim
+[credential]
+	helper = manager
