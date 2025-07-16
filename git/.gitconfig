@@ -41,5 +41,5 @@
 	branch = false
 [core]
 	editor = nvim
-[credential]
-	helper = manager
+[url "git@github.com:"]
+	insteadOf = https://github.com/
