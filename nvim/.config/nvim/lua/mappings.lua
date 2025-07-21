@@ -66,5 +66,5 @@ map("n", "<leader>rc", "<Plug>SnipClose", { silent = true })
 
 -- LSP
 map("n", "gb", "<C-o>", { desc = "LSP Go back" })
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Go to references" })
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "LSP Go to implementations" })
+map("n", "glr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Go to references" })
+map("n", "gli", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "LSP Go to implementations" })
