@@ -6,6 +6,8 @@ require "custom.autocmds"
 
 require "custom.treesitter"
 
+require "custom.conceal"
+
 -- telescope
 -- note: telescope.multigrep.lua is loaded in the plugins.telescope's key options. This way the keymap is available and telescope still gets lazy loaded. Otherwise, requiring the multigrep in this init.lua will try to require telescope before it's lazy loaded, and I want to continue lazy loading telescope for fast nvim start up times
 require "custom.telescope.user_commands"
