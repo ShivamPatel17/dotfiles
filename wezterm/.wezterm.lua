@@ -30,6 +30,45 @@ config.keys = {
 		mods = "LEADER",
 		action = workspace_switcher.switch_to_prev_workspace(),
 	},
+	{
+		key = "-",
+		mods = "LEADER",
+		action = wezterm.action.SplitPane({
+			direction = "Down",
+		}),
+	},
+	{
+		key = "x",
+		mods = "CTRL",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+	{
+		key = "|",
+		mods = "LEADER",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+		}),
+	},
+	{
+		key = "h",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "j",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "k",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "l",
+		mods = "CTRL",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
 }
 wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, workspace)
 	local gui_win = window:gui_window()
