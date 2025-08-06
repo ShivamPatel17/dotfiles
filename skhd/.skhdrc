@@ -9,7 +9,7 @@
 
 # App shortcuts 
 alt - c : open -a 'Google Chrome'
-alt - t : open -a 'ghostty'
+alt - t : open -a 'WezTerm'
 alt - p : open -a 'Spotify'
 alt - g : open -a 'ChatGPT'
 alt - m : open -a 'Messages'
