@@ -35,10 +35,10 @@ map("n", "<leader>sc", "<C-w>c", { desc = "Close Split" }) -- Close the current 
 map("n", "<leader>so", "<C-w>o", { desc = "Close OtherSplits" }) -- Close all splits except the current one
 
 -- Adjust buffer size
-map("n", "<M-K>", ":resize +2<CR>", { desc = "Increase Buffer Height" }) -- Increase buffer height
-map("n", "<M-H>", ":vertical resize -2<CR>", { desc = "Decrease Buffer Width" }) -- Decrease buffer width
-map("n", "<M-L>", ":vertical resize +2<CR>", { desc = "Increase Buffer Width" }) -- Increase buffer width
-map("n", "<M-J>", ":resize -2<CR>", { desc = "Decrease Buffer Height" }) -- Decrease buffer height
+-- map("n", "<M-K>", ":resize +2<CR>", { desc = "Increase Buffer Height" }) -- Increase buffer height
+-- map("n", "<M-H>", ":vertical resize -2<CR>", { desc = "Decrease Buffer Width" }) -- Decrease buffer width
+-- map("n", "<M-L>", ":vertical resize +2<CR>", { desc = "Increase Buffer Width" }) -- Increase buffer width
+-- map("n", "<M-J>", ":resize -2<CR>", { desc = "Decrease Buffer Height" }) -- Decrease buffer height
 
 -- Close all other buffers
 map("n", "<leader>ba", ":%bd|e#<CR>", { desc = "Close All Other Buffers" }) -- Close all buffers except most recent
@@ -50,10 +50,10 @@ map("t", "<C-e>", [[<C-\><C-n>]], { desc = "Switch Terminal to Normal Mode" }) -
 map("n", "<leader>cm", ":call clearmatches()<CR>", { desc = "Clear matches" })
 
 -- Wezterm
-vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+vim.keymap.set("n", "<A-S-h>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<A-S-j>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<A-S-k>", require("smart-splits").resize_up)
+vim.keymap.set("n", "<A-S-l>", require("smart-splits").resize_right)
 -- moving between splits
 vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
 vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
