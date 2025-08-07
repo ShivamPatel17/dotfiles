@@ -34,12 +34,6 @@ map("n", "<leader>sph", ":split<CR>", { desc = "Horizontal Split" }) -- Create a
 map("n", "<leader>sc", "<C-w>c", { desc = "Close Split" }) -- Close the current split
 map("n", "<leader>so", "<C-w>o", { desc = "Close OtherSplits" }) -- Close all splits except the current one
 
--- Adjust buffer size
--- map("n", "<M-K>", ":resize +2<CR>", { desc = "Increase Buffer Height" }) -- Increase buffer height
--- map("n", "<M-H>", ":vertical resize -2<CR>", { desc = "Decrease Buffer Width" }) -- Decrease buffer width
--- map("n", "<M-L>", ":vertical resize +2<CR>", { desc = "Increase Buffer Width" }) -- Increase buffer width
--- map("n", "<M-J>", ":resize -2<CR>", { desc = "Decrease Buffer Height" }) -- Decrease buffer height
-
 -- Close all other buffers
 map("n", "<leader>ba", ":%bd|e#<CR>", { desc = "Close All Other Buffers" }) -- Close all buffers except most recent
 
