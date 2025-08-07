@@ -114,5 +114,7 @@ config.font_size = 14
 config.bold_brightens_ansi_colors = true
 config.underline_thickness = 1
 
+config.scrollback_lines = 3500
+
 -- Finally, return the configuration to wezterm:
 return config
