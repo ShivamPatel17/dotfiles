@@ -18,22 +18,18 @@ local direction_keys = {
 	l = "Right",
 }
 
-local function split_nav(resize_or_move, key)
+local function move_pane(key)
 	return {
 		key = key,
-		mods = resize_or_move == "resize" and "ALT" or "CTRL",
+		mods = "CTRL",
 		action = wezterm.action_callback(function(win, pane)
 			if is_vim(pane) then
 				-- pass the keys through to vim/nvim
 				win:perform_action({
-					SendKey = { key = key, mods = resize_or_move == "resize" and "ALT" or "CTRL" },
+					SendKey = { key = key, mods = "CTRL" },
 				}, pane)
 			else
-				if resize_or_move == "resize" then
-					win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
-				else
-					win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-				end
+				win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
 			end
 		end),
 	}
@@ -78,11 +74,12 @@ config.keys = {
 	{ key = "RightArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Right", 1 }) },
 	{ key = "UpArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Up", 1 }) },
 	{ key = "DownArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Down", 1 }) },
+
 	-- move between split panes
-	split_nav("move", "h"),
-	split_nav("move", "j"),
-	split_nav("move", "k"),
-	split_nav("move", "l"),
+	move_pane("h"),
+	move_pane("j"),
+	move_pane("k"),
+	move_pane("l"),
 }
 
 wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, workspace)
