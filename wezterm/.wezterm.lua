@@ -100,6 +100,14 @@ wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(windo
 	}))
 end)
 
+workspace_switcher.workspace_formatter = function(label)
+	return wezterm.format({
+		{ Foreground = { Color = "#50FA7B" } },
+		{ Background = { Color = "#282a36" } },
+		{ Text = "󱂬: " .. label },
+	})
+end
+
 workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
 workspace_switcher.apply_to_config(config)
 
