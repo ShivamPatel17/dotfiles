@@ -1,1 +1,8 @@
-\x auto
+\set QUIET 1
+\pset linestyle unicode
+\pset border 2
+\pset null ∅
+\unset QUIET
+
+-- Switch pagers with :x in psql
+\set x '\\setenv PSQL_PAGER less'

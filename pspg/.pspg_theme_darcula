@@ -1,0 +1,46 @@
+template = 5
+template_menu = 16
+
+background = #50FA7B, #282a36
+data = #50FA7B, #282a36
+border = #50FA7B, #282a36
+label = #50FA7B, #282a36
+row_number=#FF5555, #D6ACFF
+record_number=#FF5555, #D6ACFF
+selected_area=#FF5555, #D6ACFF
+footer = #F1FA8C, #282a36
+cursor_data = #282a36,#BD93F9
+cursor_border = #282a36, #BD93F9 
+cursor_label = #282a36, #BD93F9
+cursor_row_number=#FF5555, #D6ACFF
+cursor_selected_area=#FF5555, #D6ACFF
+cursor_footer = #D6ACFF, #282a36
+
+scrollbar_arrows = #50FA7B, #282a36
+scrollbar_background = #F1FA8C, #282a36
+scrollbar_slider = #282a36, #F1FA8C
+
+title = #F8F8F2, #6272A4
+status_bar = #F8F8F2, #6272A4
+prompt_bar = #F8F8F2, #6272A4
+
+info_bar=#282a36,#BD93F9
+input_bar=#282a36,#BD93F9
+error_bar=#282a36,#BD93F9
+
+
+bookmark=#282a36,#BD93F9
+bookmark_border=#282a36,#BD93F9
+
+cursor_bookmark = #282a36, #282a36
+cross_cursor = #282a36, #D6ACFF
+cross_cursor_border = #282a36, #D6ACFF
+
+matched_pattern=#282a36,#BD93F9
+matched_line=#282a36,#BD93F9
+matched_pattern_cursor=#282a36,#BD93F9
+matched_line_vertical_cursor=#282a36,#BD93F9
+matched_line_vertical_cursor_border=#282a36,#BD93F9
+error=#282a36,#BD93F9
+
+
