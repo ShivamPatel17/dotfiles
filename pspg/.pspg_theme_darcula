@@ -1,18 +1,18 @@
-template = 5
+template = 16
 template_menu = 16
 
 background = #50FA7B, #282a36
 data = #50FA7B, #282a36
 border = #50FA7B, #282a36
 label = #50FA7B, #282a36
-row_number=#FF5555, #D6ACFF
-record_number=#FF5555, #D6ACFF
-selected_area=#FF5555, #D6ACFF
+row_number=#F1FA8C, #282a36
+record_number=#F1FA8C, #282a36
+selected_area=#F1FA8C, #282a36
 footer = #F1FA8C, #282a36
-cursor_data = #282a36,#BD93F9
-cursor_border = #282a36, #BD93F9 
-cursor_label = #282a36, #BD93F9
-cursor_row_number=#FF5555, #D6ACFF
+cursor_border = #50FA7B, #282a36
+cursor_data =  #282a36,#50FA7B
+cursor_label = #50FA7B, #282a36
+cursor_row_number=#F1FA8C, #282a36
 cursor_selected_area=#FF5555, #D6ACFF
 cursor_footer = #D6ACFF, #282a36
 
@@ -32,9 +32,9 @@ error_bar=#282a36,#BD93F9
 bookmark=#282a36,#BD93F9
 bookmark_border=#282a36,#BD93F9
 
-cursor_bookmark = #282a36, #282a36
-cross_cursor = #282a36, #D6ACFF
-cross_cursor_border = #282a36, #D6ACFF
+cursor_bookmark = #282a36, #BD93F9
+cross_cursor =   #282a36,#BD93F9
+cross_cursor_border = #50FA7B, #282a36
 
 matched_pattern=#282a36,#BD93F9
 matched_line=#282a36,#BD93F9
