@@ -1,6 +1,5 @@
 # Docker aliases
 alias dps='docker ps'
-alias log='docker logs --timestamps'
 alias pruneall='docker container prune; docker image prune; docker volume prune; docker network prune; docker system prune'
 alias dnames="docker ps --format "{{.Names}}""
 
@@ -37,4 +36,27 @@ docker_reset() {
         echo "Removing remaining volumes..."
         docker volume rm $(docker volume ls -q) 2>/dev/null || true
     fi
+}
+
+dlog() {
+    # Get a list of running container names
+    local containers=($(docker ps --format '{{.Names}}'))
+
+    if [ ${#containers[@]} -eq 0 ]; then
+        echo "No running Docker containers found."
+        return 1
+    fi
+
+    echo "Select a container to view logs:"
+
+    # Use zsh's built-in select menu
+    select container_name in "${containers[@]}"; do
+        if [ -n "$container_name" ]; then
+            echo "Showing live logs for: $container_name"
+            docker logs -f "$container_name"
+            break
+        else
+            echo "Invalid selection. Please try again."
+        fi
+    done
 }
