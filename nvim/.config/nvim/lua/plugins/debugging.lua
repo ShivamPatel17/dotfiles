@@ -9,7 +9,28 @@ return {
     local dap = require "dap"
     local dapui = require "dapui"
     local dapgo = require "dap-go"
-    local machine_specific_config = require "local.config"
+
+    -- create a file at ../local/config.lua
+    -- and add the following:
+    --
+    --
+    -- local M = {}
+    --
+    -- M.debug_local_path = "/path/to/your/project"
+    -- M.debug_path_replacement = "/app" (for example) -- should just be /path/to/your/project/files/in/you/container
+    --
+    -- return M
+
+    -- The pcall function will safely attempt to load the module.
+    -- 'success' will be true if the module exists and loads, otherwise false.
+    local success, machine_specific_config = pcall(require, "local.config")
+
+    -- Check if the module was loaded successfully.
+    if not success then
+      -- If local.config doesn't exist, we just exit the function gracefully.
+      print "Warning: local.config not found. Debugger configuration skipped."
+      return
+    end
 
     -- The log file is in the |stdpath| `cache` folder.
     -- To print the location:  >
@@ -17,6 +38,7 @@ return {
     --     :lua print(vim.fn.stdpath('cache'))
     --
 
+    -- turn on DEBUG mode and look at the logs if you're not able to successfully set breakpoints
     -- dap.set_log_level "DEBUG"
 
     -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
