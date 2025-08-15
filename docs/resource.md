@@ -4,3 +4,5 @@
 - [vim guide](https://thevaluable.dev/vim-advanced/)
 - neovim user manual
   - meant to be read in nvim with `:help user-manual`
+    - tracking where I'm at in the manual:
+      - left off at user_20.txt (in the editing effectively section)
