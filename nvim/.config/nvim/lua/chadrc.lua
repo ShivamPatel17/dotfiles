@@ -31,7 +31,8 @@ M = {
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
       separator_style = "block",
-      order = nil,
+      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
+      -- customizing modules based on this https://github.com/NvChad/ui/blob/v3.0/lua/nvchad/stl/utils.lua
       modules = {
         lsp = function()
           local stbufnr = function()
@@ -45,7 +46,7 @@ M = {
             end
           end
 
-          return "NA"
+          return ""
         end,
       },
     },
