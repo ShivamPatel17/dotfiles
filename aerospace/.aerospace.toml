@@ -237,17 +237,14 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace 2' 
 [[on-window-detected]]
-    if.app-id = 'com.mitchellh.ghostty'
+    if.app-id = 'com.github.wez.wezterm'
     run = 'move-node-to-workspace 3' 
 [[on-window-detected]]
     if.app-id = 'com.zoom.xos'
     run = 'move-node-to-workspace 7' 
 [[on-window-detected]]
     if.app-id = 'com.docker.docker'
-    run = 'move-node-to-workspace *' 
+    run = 'move-node-to-workspace D' 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
-    run = 'move-node-to-workspace 9' 
-[[on-window-detected]]
-    if.app-id = 'com.openai.chat'
-    run = 'move-node-to-workspace G' 
+    run = 'move-node-to-workspace P' 
