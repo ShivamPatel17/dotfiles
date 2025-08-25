@@ -12,4 +12,4 @@ o.shiftwidth = 4 -- Number of spaces used for indentation
 o.softtabstop = 4 -- Tabs and backspaces behave as 4 spaces
 o.expandtab = false -- Use tabs instead of spaces
 o.relativenumber = true -- Use relative line numbers
-o.smartcase = true
+o.smartcase = true -- searching uses smart case

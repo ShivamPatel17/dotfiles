@@ -4,6 +4,8 @@
 
 ---@type ChadrcConfig
 local M = {}
+local require = require "noice.util.lazy"
+local Msg = require "noice.ui.msg"
 
 M = {
   base46 = {
@@ -27,12 +29,10 @@ M = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      theme = "minimal", -- default/vscode/vscode_colored/minimal
-      -- default/round/block/arrow separators work only for default statusline theme
-      -- round and block will work for minimal theme only
+      theme = "minimal",
       separator_style = "block",
-      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
-      -- customizing modules based on this https://github.com/NvChad/ui/blob/v3.0/lua/nvchad/stl/utils.lua
+      order = { "mode", "file", "git", "macro", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
+
       modules = {
         lsp = function()
           local stbufnr = function()
@@ -45,7 +45,17 @@ M = {
               end
             end
           end
+          return ""
+        end,
 
+        macro = function()
+          local ok, noice = pcall(require, "noice")
+          if not ok then
+            return "macro error in chadrc.lua"
+          end
+          if noice.api.status.mode.has() then
+            return " " .. noice.api.status.mode.get_hl() .. " "
+          end
           return ""
         end,
       },
