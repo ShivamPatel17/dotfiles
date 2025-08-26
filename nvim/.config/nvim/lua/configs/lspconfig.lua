@@ -33,6 +33,8 @@ lspconfig.gopls.setup {
       analyses = {
         unusedparams = true, -- Detect unused parameters
         nilness = true, -- Check for nil-related issues
+        ST1003 = false, -- Uuid/Id should be renamed to UUID/ID
+        ST1000 = false, -- packages should have at least one package comment
       },
       staticcheck = true, -- Enable additional static analysis
       completeUnimported = true, -- Auto-import packages
