@@ -1,7 +1,7 @@
 return {
   {
     "github/copilot.vim",
-    lazy = false,
+    lazy = true,
     config = function()
       -- Set up Copilot keybindings
       vim.keymap.set("i", "<C-S>", "<Plug>(copilot-next)", { silent = true, desc = "Next Copilot suggestion" })
