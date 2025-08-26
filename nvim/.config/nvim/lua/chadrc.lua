@@ -4,8 +4,6 @@
 
 ---@type ChadrcConfig
 local M = {}
-local require = require "noice.util.lazy"
-local Msg = require "noice.ui.msg"
 
 M = {
   base46 = {
@@ -29,9 +27,9 @@ M = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      theme = "minimal",
+      theme = "vscode_colored",
       separator_style = "block",
-      order = { "mode", "file", "git", "macro", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
+      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
 
       modules = {
         lsp = function()
@@ -48,16 +46,17 @@ M = {
           return ""
         end,
 
-        macro = function()
-          local ok, noice = pcall(require, "noice")
-          if not ok then
-            return "macro error in chadrc.lua"
-          end
-          if noice.api.status.mode.has() then
-            return " " .. noice.api.status.mode.get_hl() .. " "
-          end
-          return ""
-        end,
+        -- was using this with noice.nvim
+        -- macro = function()
+        --   local ok, noice = pcall(require, "noice")
+        --   if not ok then
+        --     return "macro error in chadrc.lua"
+        --   end
+        --   if noice.api.status.mode.has() then
+        --     return " " .. noice.api.status.mode.get_hl() .. " "
+        --   end
+        --   return ""
+        -- end,
       },
     },
 
