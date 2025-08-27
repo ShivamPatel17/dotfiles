@@ -36,7 +36,7 @@ local function move_pane(key)
 end
 
 -- Workspace Switcher config
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm") -- need to remove the url overwrite in your global gitignore when first setting this up on a new machine. See https://github.com/wezterm/wezterm/issues/4490
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm") -- need to comment out the [url] overwrite in your global .gitconfig (which lives in this repo) when first setting this up on a new machine. See https://github.com/wezterm/wezterm/issues/4490
 config.keys = {
 	{ key = "{", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
 	{ key = "}", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
@@ -68,6 +68,11 @@ config.keys = {
 		action = wezterm.action.SplitPane({
 			direction = "Right",
 		}),
+	},
+	{
+		key = "m",
+		mods = "LEADER",
+		action = wezterm.action.TogglePaneZoomState,
 	},
 	-- resize wezterm panes
 	{ key = "LeftArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Left", 4 }) },
@@ -111,6 +116,34 @@ end
 workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
 workspace_switcher.apply_to_config(config)
 
+-- tabline
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez") -- need to comment out the [url] overwrite in your global .gitconfig (which lives in this repo) when first setting this up on a new machine. See https://github.com/wezterm/wezterm/issues/4490
+tabline.setup({
+	options = {
+		icons_enabled = true,
+		theme = "Dracula",
+		tabs_enabled = true,
+		theme_overrides = {},
+		section_separators = "",
+		component_separators = "",
+		tab_separators = "",
+	},
+	sections = {
+		tabline_a = { "workspace" },
+		tabline_b = { "" },
+		tabline_c = { "" },
+		tab_active = {
+			"index",
+			{ "process", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = { left = 0, right = 1 } },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "" },
+		tabline_y = { "" },
+		tabline_z = { "" },
+	},
+	extensions = {},
+})
 -- basic configs
 
 config.window_decorations = "RESIZE"
@@ -123,6 +156,7 @@ config.bold_brightens_ansi_colors = true
 config.underline_thickness = 1
 
 config.scrollback_lines = 3500
+config.use_fancy_tab_bar = false
 
 -- Finally, return the configuration to wezterm:
 return config
