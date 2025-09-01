@@ -17,7 +17,7 @@ M = {
     hl_override = {
       LspSignatureActiveParameter = { fg = "#62de9c", bg = "#007ACC" },
       Normal = {
-        bg = { "black", 2 },
+        bg = { "black", 1 },
       },
     },
   },
