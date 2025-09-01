@@ -13,8 +13,5 @@
 brew tap homebrew/cask-fonts
 brew install --cask font-symbols-only-nerd-font
 brew install --cask sf-symbols
-```
-
-```
 brew install --cask font-hack-nerd-font
 ```
