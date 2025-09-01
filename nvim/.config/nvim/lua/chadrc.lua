@@ -10,8 +10,15 @@ M = {
 
     theme = "doomchad",
 
+    hl_add = {
+      ["NormalNC"] = { bg = "black" },
+    },
+
     hl_override = {
       LspSignatureActiveParameter = { fg = "#62de9c", bg = "#007ACC" },
+      Normal = {
+        bg = { "black", 3 },
+      },
     },
   },
 
@@ -46,7 +53,6 @@ M = {
           return ""
         end,
 
-        -- was using this with noice.nvim
         -- macro = function()
         --   local ok, noice = pcall(require, "noice")
         --   if not ok then
