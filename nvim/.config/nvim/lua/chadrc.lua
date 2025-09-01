@@ -11,7 +11,7 @@ M = {
     theme = "doomchad",
 
     hl_add = {
-      ["NormalNC"] = { bg = "#1B1D20" },
+      ["NormalNC"] = { bg = "#14191C" },
     },
 
     hl_override = {

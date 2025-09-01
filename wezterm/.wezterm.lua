@@ -153,13 +153,13 @@ config.use_fancy_tab_bar = false
 
 config.color_scheme = "Dracula (Official)"
 config.colors = {
-	background = "#22272F", -- Replace with your desired hex code or color name
+	background = "#1C2024", -- Replace with your desired hex code or color name
 }
 config.inactive_pane_hsb = {
 	-- Reduce saturation to make the inactive pane more "washed out"
-	saturation = 0.5,
+	saturation = 0.8,
 	-- Reduce brightness to make the inactive pane dimmer
-	brightness = 0.5,
+	brightness = 0.6,
 	-- Change the hue (color shift). You can experiment with this.
 	hue = 1.0,
 }
