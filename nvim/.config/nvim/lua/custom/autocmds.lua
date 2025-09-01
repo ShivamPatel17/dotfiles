@@ -78,3 +78,13 @@ vim.keymap.set("n", "<leader>co", ":ToggleCopilot<CR>", {
   silent = true,
   desc = "Toggle GitHub Copilot",
 })
+
+-- Apply NormalNC highlighting to all windows when Neovim loses focus
+vim.api.nvim_create_autocmd("FocusLost", {
+  command = "set winhighlight=Normal:NormalNC",
+})
+
+-- Revert to normal highlighting when Neovim regains focus
+vim.api.nvim_create_autocmd("FocusGained", {
+  command = "set winhighlight=",
+})

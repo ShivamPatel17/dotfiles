@@ -11,13 +11,13 @@ M = {
     theme = "doomchad",
 
     hl_add = {
-      ["NormalNC"] = { bg = "black" },
+      ["NormalNC"] = { bg = "#1B1D20" },
     },
 
     hl_override = {
       LspSignatureActiveParameter = { fg = "#62de9c", bg = "#007ACC" },
       Normal = {
-        bg = { "black", 3 },
+        bg = { "black", 2 },
       },
     },
   },

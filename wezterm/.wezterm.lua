@@ -152,6 +152,17 @@ config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.use_fancy_tab_bar = false
 
 config.color_scheme = "Dracula (Official)"
+config.colors = {
+	background = "#22272F", -- Replace with your desired hex code or color name
+}
+config.inactive_pane_hsb = {
+	-- Reduce saturation to make the inactive pane more "washed out"
+	saturation = 0.5,
+	-- Reduce brightness to make the inactive pane dimmer
+	brightness = 0.5,
+	-- Change the hue (color shift). You can experiment with this.
+	hue = 1.0,
+}
 config.font_size = 14
 config.bold_brightens_ansi_colors = true
 config.underline_thickness = 1
