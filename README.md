@@ -11,35 +11,9 @@
 - running on arm64
   - `uname -m` should print arm64
 
-### Tools to download from HomeBrew
-
-- brew install mise
-- brew install rg
-- brew install neovim
-- brew install fzf
-- brew install stow
-- brew install --cack ghostty
-- brew install --cask nikitabobko/tap/aerospace
-- brew install jesseduffield/lazydocker/lazydocker
-- brew install skhd
-- brew install zoxide
-- [brew install SketchyBar](https://github.com/FelixKratz/SketchyBar)
-- [brew install JankyBorders](https://github.com/FelixKratz/JankyBorders)
-- brew install lazygit
-- brew install envchain
-- brew install eza
-- [brew install sesh](https://github.com/joshmedeski/sesh)
-
 #### [Mise](https://mise.jdx.dev/)
 
 - for dev tools and environment management
-
-#### tmux
-
-`brew install tmux`
-`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-
-- be sure to run <C-a> shift+i to install the plugins
 
 #### [Stow](https://www.gnu.org/software/stow/)
 
@@ -56,6 +30,7 @@
 #### aerospace
 
 - for tiling
+  - run `restart_aerospace` when you first turn on your machine and log in
 
 #### jankyborders
 
@@ -65,7 +40,7 @@
 
 - for a cooler menu bar
 
-#### ghostty
+#### Wezterm
 
 - my terminal emulator
 
@@ -78,11 +53,6 @@
 
 - [eza](https://github.com/eza-community/eza): drop in replacement for `ls`
 - [bat](https://github.com/sharkdp/bat): a better `cat`
-
-# HINTS
-
-- `<leader>wK` to see which key binding are available to you wherever your cursor currently is. Works for regular buffers, nvimtree, and probably more!
-- `:set virtualedit=` to prevent the cursor from going past the end of the text
 
 ## TODO
 

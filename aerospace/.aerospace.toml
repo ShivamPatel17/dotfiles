@@ -229,7 +229,7 @@ automatically-unhide-macos-hidden-apps = true
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
-# To get the app-id, run mdls -name kMDItemCFBundleIdentifier -r /Applications/Spotify.app
+# To get the app-id, run `mdls -name kMDItemCFBundleIdentifier -r /Applications/Spotify.app`
 [[on-window-detected]]
     if.app-id = 'org.google.Chrome'
     run = 'move-node-to-workspace 1' 
@@ -244,7 +244,7 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace 7' 
 [[on-window-detected]]
     if.app-id = 'com.docker.docker'
-    run = 'move-node-to-workspace D' 
+    run = 'move-node-to-workspace 8' 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
-    run = 'move-node-to-workspace P' 
+    run = 'move-node-to-workspace 9' 
