@@ -12,6 +12,10 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 map("i", "jk", "<ESC>")
 
+-- Use j and k to move by displayed lines on wrapped text
+map("n", "j", "gj")
+map("n", "k", "gk")
+
 -- vim command history
 map("n", "<leader>cf", ":lua require'telescope.builtin'.command_history{}<CR>", { desc = "fzf vim command history" })
 
