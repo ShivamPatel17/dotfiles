@@ -7,6 +7,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
+local local_machine = require "local.config"
 
 -- List of servers to set up with default configuration
 local servers = { "html", "cssls", "gopls", "solargraph", "protols" } -- Add gopls for Go
@@ -134,6 +135,20 @@ lspconfig.pyright.setup {
           autoSearchPaths = true,
           useLibraryCodeForTypes = true,
         },
+      },
+    },
+  },
+}
+
+lspconfig.yamlls.setup {
+  on_attach = nvlsp.on_attach, -- If you have a custom on_attach
+  on_init = nvlsp.on_init, -- If you have a custom on_init
+  capabilities = nvlsp.capabilities, -- If you have custom capabilities
+  filetypes = { "yaml" },
+  settings = {
+    yaml = {
+      schemas = {
+        [local_machine.dpcli_investgation_path] = "*task-breakdown*.yaml",
       },
     },
   },

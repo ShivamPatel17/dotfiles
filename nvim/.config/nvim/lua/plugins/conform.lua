@@ -17,6 +17,7 @@ return {
           sh = { "beautysh" },
           hcl = { "hclfmt" },
           proto = { "buf" },
+          toml = { "taplo" },
         },
         format_on_save = {
           enabled = true,

@@ -6,3 +6,4 @@
 
 -- Switch pagers with :x in psql
 \set x '\\setenv PSQL_PAGER less'
+\x auto

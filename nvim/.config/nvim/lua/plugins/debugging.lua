@@ -49,7 +49,23 @@ return {
       dap_configurations = {
         {
           type = "go",
-          name = "Attach Web - localhost:2345",
+          name = "2344",
+          mode = "remote",
+          request = "attach",
+          remotePath = "/app",
+          port = 2344,
+          connect = {
+            host = "127.0.0.1",
+            port = "2344",
+          },
+          -- https://go.googlesource.com/vscode-go/+/c3516da303907ca11ee51e64f961cf2a4ac5339a/docs/dlv-dap.md
+          substitutePath = {
+            { from = machine_specific_config.debug_local_path, to = machine_specific_config.debug_path_replacement },
+          },
+        },
+        {
+          type = "go",
+          name = "2345",
           mode = "remote",
           request = "attach",
           remotePath = machine_specific_config.debug_path_replacement,
@@ -65,7 +81,7 @@ return {
         },
         {
           type = "go",
-          name = "Attach Docker Test - localhost:2346",
+          name = "2346",
           mode = "remote",
           request = "attach",
           remotePath = "/app",
@@ -81,7 +97,7 @@ return {
         },
         {
           type = "go",
-          name = "Attach Docker 2347",
+          name = "2347",
           mode = "remote",
           request = "attach",
           remotePath = "/app",

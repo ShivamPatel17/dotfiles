@@ -80,6 +80,9 @@ config.keys = {
 	{ key = "UpArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Up", 4 }) },
 	{ key = "DownArrow", mods = "ALT|SHIFT", action = act.AdjustPaneSize({ "Down", 4 }) },
 
+	-- rotate panes
+	{ key = "n", mods = "LEADER", action = act.RotatePanes("CounterClockwise") },
+
 	-- move between split panes
 	move_pane("h"),
 	move_pane("j"),
