@@ -2,6 +2,6 @@
 alias awswhoami="aws sts get-caller-identity"
 
 # command for switching AWS profiles
-alias awsps='export AWS_PROFILE=$(dp awsso li profiles -A | fzf)'
+alias awsps='export AWS_PROFILE=$(dp awsso list profiles -A | fzf)'
 
 export AWS_SDK_LOAD_CONFIG=1

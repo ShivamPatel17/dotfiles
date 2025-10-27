@@ -2,6 +2,7 @@
 alias dps='docker ps'
 alias pruneall='docker container prune; docker image prune; docker volume prune; docker network prune; docker system prune'
 alias dnames="docker ps --format "{{.Names}}""
+alias dc="docker compose"
 
 nukedocker() {
     echo "Stopping all running containers..."
@@ -60,3 +61,5 @@ dlog() {
         fi
     done
 }
+
+
