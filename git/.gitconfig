@@ -1,12 +1,14 @@
 [user]
 	name = "Shivam"
 	email = =
+	signingkey = E6AE82D3D75DDB0A
 [column]
 	ui = auto
 [branch]
 	sort = -committerdate
 [tag]
 	sort = version:refname
+	gpgSign = true
 [diff]
 	algorithm = histogram
 	colorMoved = plain
@@ -17,6 +19,7 @@
 	autoSetupRemove = true
 [commit]
 	verbose = true
+	gpgsign = true
 [init]
 	defaultBranch = main
 [alias]
@@ -44,3 +47,6 @@
 ; need to disable this url config for wezterm plugins the first time you're installing them (or reinstalling)
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[include]
+	path = ~/.gitconfig-local
+
