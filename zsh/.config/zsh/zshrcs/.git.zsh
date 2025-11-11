@@ -10,4 +10,4 @@ goriginhard() {
     git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
 }
 
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY

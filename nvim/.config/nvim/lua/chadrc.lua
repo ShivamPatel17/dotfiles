@@ -36,7 +36,8 @@ M = {
     statusline = {
       theme = "vscode_colored",
       separator_style = "block",
-      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
+      -- https://github.com/NvChad/ui/blob/v3.0/lua/nvchad/stl/utils.lua"
+      order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cursor", "cwd" },
 
       modules = {
         lsp = function()
