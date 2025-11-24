@@ -12,3 +12,12 @@ reporoot() {
         cd "$repo_root" || return 1
     fi
 }
+
+move_from_downloads() {
+  local files
+  files=("${(@f)$(find "$HOME/Downloads" -maxdepth 1 -type f | fzf -m)}") || return
+
+  for f in $files; do
+    mv -- "$f" .
+  done
+}

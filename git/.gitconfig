@@ -1,7 +1,7 @@
 [user]
 	name = "Shivam"
 	email = =
-	signingkey = E6AE82D3D75DDB0A
+	signingkey = 0A99ED733AA39EC1 # find gpg key with $ gpg --list-secret-keys --keyid-format=long
 [column]
 	ui = auto
 [branch]
