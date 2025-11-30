@@ -148,7 +148,7 @@ vim.lsp.config.basedpyright = {
         diagnosticMode = "openFilesOnly",
         typeCheckingMode = "strict",
         inlayHints = {
-          variableTypes = true,
+          variableTypes = false,
           callArgumentNames = true,
           functionReturnTypes = true,
           genericTypes = false,
@@ -191,7 +191,7 @@ vim.lsp.config.gopls = {
   settings = {
     gopls = {
       completeUnimported = true,
-      usePlaceholders = true,
+      usePlaceholders = false,
       staticcheck = true, -- Enable additional static analysis
       analyses = {
         unusedparams = true, -- Detect unused parameters
@@ -199,12 +199,12 @@ vim.lsp.config.gopls = {
         ST1003 = false, -- Uuid/Id should be renamed to UUID/ID
         ST1000 = false, -- packages should have at least one package comment
       },
-      ["ui.inlayhint.hints"] = {
-        compositeLiteralFields = true,
-        constantValues = true,
-        parameterNames = true,
-        rangeVariableTypes = true,
-      },
+      -- ["ui.inlayhint.hints"] = {
+      --   compositeLiteralFields = true,
+      --   constantValues = true,
+      --   parameterNames = true,
+      --   rangeVariableTypes = true,
+      -- },
     },
   },
 }
