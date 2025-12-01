@@ -35,11 +35,11 @@ return {
     -- The log file is in the |stdpath| `cache` folder.
     -- To print the location:  >
     --
-    --     :lua print(vim.fn.stdpath('cache'))
+    --     :lua print(vim.fn.stdpath('cache')) # often ~/.cache/nvim
     --
 
     -- turn on DEBUG mode and look at the logs if you're not able to successfully set breakpoints
-    -- dap.set_log_level "DEBUG"
+    dap.set_log_level "DEBUG"
 
     -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
     -- so I guess these configurations like substitutePath are interpretted in dlv perhaps
@@ -113,7 +113,7 @@ return {
         },
         {
           type = "go",
-          name = "Attach Local",
+          name = "Attach Local (no substitutePath)",
           mode = "remote",
           request = "attach",
           remotePath = machine_specific_config.debug_path_replacement,

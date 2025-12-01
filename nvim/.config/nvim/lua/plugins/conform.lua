@@ -9,7 +9,7 @@ return {
         log_level = vim.log.levels.DEBUG, -- uncomment to debug Conform
         formatters_by_ft = {
           lua = { "stylua" },
-          go = { "gofmt" },
+          go = { "gofmt", "goimports" },
           markdown = { "prettier" },
           json = { "prettier" },
           zsh = { "beautysh" },
