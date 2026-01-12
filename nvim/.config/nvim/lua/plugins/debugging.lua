@@ -44,6 +44,9 @@ return {
     -- reqeusts to the debugger are sent with this func https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap/session.lua#L1846-L1846
     -- so I guess these configurations like substitutePath are interpretted in dlv perhaps
     -- https://github.com/go-delve/delve/blob/master/Documentation/cli/substitutepath.md#dap-server
+    --
+    -- TIPS
+    -- sometimes, your dlv debugger will be hung up after a panic.. use `killall -9 dlv` in another terminal to kill the dlv
     dapgo.setup {
       -- https://github.com/mfussenegger/nvim-dap/blob/8df427aeba0a06c6577dc3ab82de3076964e3b8d/doc/dap.txt#L239-L240
       dap_configurations = {

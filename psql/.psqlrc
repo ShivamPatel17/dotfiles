@@ -7,3 +7,5 @@
 -- Switch pagers with :x in psql
 \set x '\\setenv PSQL_PAGER less'
 \set p '\\setenv PSQL_PAGER pspg --custom-style=darcula'
+
+\x on

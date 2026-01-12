@@ -90,3 +90,7 @@ map("n", "gb", "<C-o>", { desc = "LSP Go back" })
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Go to references" })
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "LSP Go to implementations" })
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP Go to definition" })
+
+-- nvim-tree
+vim.keymap.set("n", "<C-t>", ":NvimTreeToggle<CR>", { silent = true, noremap = true }) -- moving from the default <C-N> to <C-T> so I can free up <C-N> for moving forward in jumplist
+vim.keymap.set("n", "<C-n>", "<C-i>", { desc = "Jump forward in jumplist" }) -- the default <C-i> is a tab, so remap to <C-n>
