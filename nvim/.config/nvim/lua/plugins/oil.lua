@@ -8,6 +8,7 @@ return {
         keymaps = {
           ["<C-h>"] = false,
           ["<M-h>"] = "actions.select_split",
+          ["<M-y>"] = "actions.yank_entry",
         },
         view_options = {
           show_hidden = true,
