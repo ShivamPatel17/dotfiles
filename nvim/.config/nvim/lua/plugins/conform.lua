@@ -18,7 +18,7 @@ return {
           hcl = { "hclfmt" },
           proto = { "buf" },
           toml = { "taplo" },
-          -- yaml = { "yamlfmt" },
+          yaml = { "prettier" },
         },
         format_on_save = {
           enabled = true,

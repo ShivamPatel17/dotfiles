@@ -15,7 +15,7 @@ return {
         silent = true,
         desc = "Accept next Copilot word",
       })
-      vim.g.copilot_enabled = false
+      vim.g.copilot_enabled = true
       vim.g.copilot_no_tab_map = true
       vim.g.copilot_suggestion_auto_trigger = true
       vim.g.copilot_suggestion_multi_line = true
