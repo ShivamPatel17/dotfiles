@@ -9,6 +9,11 @@ return {
           ["<C-h>"] = false,
           ["<M-h>"] = "actions.select_split",
           ["<M-y>"] = "actions.yank_entry",
+          ["<M-Y>"] = {
+            "actions.yank_entry",
+            opts = { modify = ":." },
+            desc = "Yank relative path",
+          },
         },
         view_options = {
           show_hidden = true,
