@@ -184,9 +184,13 @@ return {
     {
       "<leader>gB",
       function()
-        Snacks.gitbrowse()
+        local default_branch = vim.fn.system("git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null"):gsub("refs/remotes/origin/", ""):gsub("%s+", "")
+        if default_branch == "" then
+          default_branch = "main"
+        end
+        Snacks.gitbrowse({ branch = default_branch })
       end,
-      desc = "Git Browse",
+      desc = "Git Browse (default branch)",
       mode = { "n", "v" },
     },
     {
