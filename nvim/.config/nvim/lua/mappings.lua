@@ -94,3 +94,10 @@ map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP Go to defi
 -- nvim-tree
 vim.keymap.set("n", "<C-t>", ":NvimTreeToggle<CR>", { silent = true, noremap = true }) -- moving from the default <C-N> to <C-T> so I can free up <C-N> for moving forward in jumplist
 vim.keymap.set("n", "<C-n>", "<C-i>", { desc = "Jump forward in jumplist" }) -- the default <C-i> is a tab, so remap to <C-n>
+
+-- Copy relative file path to clipboard
+map("n", "<leader>yp", function()
+  local path = vim.fn.expand("%:.")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Yank relative file path" })
