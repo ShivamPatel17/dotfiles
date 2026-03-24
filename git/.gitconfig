@@ -1,7 +1,7 @@
 [user]
 	name = "Shivam"
 	email = =
-	signingkey = E6AE82D3D75DDB0A # find gpg key with $ gpg --list-secret-keys --keyid-format=long
+	signingkey = /Users/shivampatel/.ssh/id_ed25519.pub
 [column]
 	ui = auto
 [branch]
@@ -19,7 +19,7 @@
 	autoSetupRemove = true
 [commit]
 	verbose = true
-	gpgsign = false
+	gpgsign = true
 [init]
 	defaultBranch = main
 [alias]
@@ -50,3 +50,5 @@
 [include]
 	path = ~/.gitconfig-local
 
+[gpg]
+	format = ssh

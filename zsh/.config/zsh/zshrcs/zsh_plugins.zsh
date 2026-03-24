@@ -38,4 +38,3 @@ unset initscript
 
 alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
-# Config zsh-vi-mode
