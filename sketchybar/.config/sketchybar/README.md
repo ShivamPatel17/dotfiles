@@ -23,21 +23,27 @@ In addition to possessing all the features of the aforementioned configuration, 
 
 1. Install [Homebrew](https://brew.sh/).
 
-2. Install [Luarocks](https://luarocks.org/):
+2. Install [JetBrainsMono Nerd Font](https://www.nerdfonts.com/):
+
+```bash
+brew install --cask font-jetbrains-mono-nerd-font
+```
+
+3. Install [Luarocks](https://luarocks.org/):
 
 ```bash
 brew install luarocks
 ```
 
-3. Install [Lunajson](https://github.com/grafi-tt/lunajson):
+4. Install [Lunajson](https://github.com/grafi-tt/lunajson):
 
 ```bash
 sudo luarocks install lunajson
 ```
 
-4. Install [yfinance](https://pypi.org/project/yfinance/).
+5. Install [yfinance](https://pypi.org/project/yfinance/).
 
-5. Run the following script, sourced from [this repository](https://github.com/FelixKratz/dotfiles):
+6. Run the following script, sourced from [this repository](https://github.com/FelixKratz/dotfiles):
 
 - I actually only needed to get the [SketchyBar lua pluging](https://github.com/FelixKratz/SbarLua)
 
@@ -45,19 +51,19 @@ sudo luarocks install lunajson
 sudo curl -L https://raw.githubusercontent.com/FelixKratz/dotfiles/master/install_sketchybar.sh | sh
 ```
 
-6. Run the following command to clone this repository and have it overwrite the SketchyBar configuration:
+7. Run the following command to clone this repository and have it overwrite the SketchyBar configuration:
 
 ```
 git clone https://github.com/TheGoldenPatrik1/sketchybar-config $HOME/.config/sketchybar
 ```
 
-7. Restart SketchyBar:
+8. Restart SketchyBar:
 
 ```
 brew services restart sketchybar
 ```
 
-8. Go to "Settings" -> "Control Center" -> "Automatically hide and show the menu bar" and change its value to "Always."
+9. Go to "Settings" -> "Control Center" -> "Automatically hide and show the menu bar" and change its value to "Always."
 
 ## Configuration
 

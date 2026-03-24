@@ -57,3 +57,17 @@
 ## TODO
 
 - still need to figure out all the dependencies for my set up. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
+
+# Notes from a fresh set up 
+
+- `brew install --cask wezterm` (GUI app)
+- `brew install wezterm` (CLI)
+- installed chrome
+- setup my git
+- had to install homebrew first
+- used brew to install:
+  - `mise`, `nvim`, `zoxide`, `lazygit`
+  - `brew install --cask nikitabobko/tap/aerospace`
+  - `brew install asmvik/formulae/skhd`
+  - `brew tap FelixKratz/formulae & brew install borders`
+- then ran `mise install`

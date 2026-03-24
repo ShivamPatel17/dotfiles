@@ -116,7 +116,10 @@ workspace_switcher.workspace_formatter = function(label)
 	})
 end
 
-workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
+local home = os.getenv("HOME")
+config.set_environment_variables = {
+	PATH = home .. "/.local/share/mise/shims:" .. os.getenv("PATH"),
+}
 workspace_switcher.apply_to_config(config)
 
 -- tabline

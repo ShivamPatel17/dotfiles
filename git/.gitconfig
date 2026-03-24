@@ -45,8 +45,8 @@
 [core]
 	editor = nvim
 ; need to disable this url config for wezterm plugins the first time you're installing them (or reinstalling)
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
 [include]
 	path = ~/.gitconfig-local
 
