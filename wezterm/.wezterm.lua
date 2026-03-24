@@ -120,6 +120,7 @@ local home = os.getenv("HOME")
 config.set_environment_variables = {
 	PATH = home .. "/.local/share/mise/shims:" .. os.getenv("PATH"),
 }
+workspace_switcher.zoxide_path = home .. "/.local/share/mise/shims/zoxide"
 workspace_switcher.apply_to_config(config)
 
 -- tabline
