@@ -19,7 +19,7 @@
 	autoSetupRemove = true
 [commit]
 	verbose = true
-	gpgsign = true
+	gpgsign = false
 [init]
 	defaultBranch = main
 [alias]

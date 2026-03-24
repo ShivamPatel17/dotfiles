@@ -1,0 +1,13 @@
+[tools]
+bat = "latest"
+cargo = "latest"
+gh = "latest"
+go = "latest"
+lazygit = "latest"
+lua = "latest"
+node = "latest"
+python = "latest"
+rg = "latest"
+rust = "latest"
+stylua = "latest"
+zoxide = "latest"
