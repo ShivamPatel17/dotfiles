@@ -15,6 +15,35 @@
   - you'll need to install the actual formatting tool (like "prettier") yourself locally
 - [mason]() manages external tools, such as language servers, linters, formatters, and debugger
   - run `:Mason` to see which LSPs are installed
+  - to install everything at once: `:MasonInstall stylua prettier beautysh hclfmt buf taplo lua-language-server basedpyright solargraph bash-language-server typescript-language-server svelte-language-server css-lsp tailwindcss-language-server html-lsp`
+  - note: `gofmt` and `gopls` come with the Go toolchain, not Mason
+
+### Formatters (conform.nvim)
+
+| Formatter | Filetypes |
+|-----------|-----------|
+| `stylua` | Lua |
+| `gofmt` | Go |
+| `prettier` | Markdown, JSON, YAML |
+| `beautysh` | Zsh, Bash, Shell |
+| `hclfmt` | HCL |
+| `buf` | Proto |
+| `taplo` | TOML |
+
+### LSP Servers
+
+| Server | Filetypes |
+|--------|-----------|
+| `lua-language-server` | Lua |
+| `basedpyright` | Python |
+| `gopls` | Go |
+| `solargraph` | Ruby |
+| `bash-language-server` | Bash/Shell/Zsh |
+| `typescript-language-server` | JS/TS |
+| `svelteserver` | Svelte |
+| `vscode-css-language-server` | CSS/SCSS |
+| `tailwindcss-language-server` | HTML/CSS/JS/TS |
+| `vscode-html-language-server` | HTML |
 - [nvimtree](https://github.com/nvim-tree/nvim-tree.lua) is your file explorer
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) lets your fuzzy find & preview lists
   - find files

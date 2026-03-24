@@ -201,6 +201,17 @@ local router = sbar.add("item", {
 
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
+-- Set initial wifi state on load
+sbar.exec("ipconfig getifaddr en0", function(ip)
+	local connected = not (ip == "")
+	wifi:set({
+		icon = {
+			string = connected and icons.wifi.connected or icons.wifi.disconnected,
+			color = connected and colors.white or colors.red,
+		},
+	})
+end)
+
 wifi_up:subscribe("network_update", function(env)
 	local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
 	local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
@@ -220,7 +231,7 @@ wifi_up:subscribe("network_update", function(env)
 	})
 end)
 
-wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
+wifi:subscribe({ "wifi_change", "system_woke", "forced" }, function(env)
 	sbar.exec("ipconfig getifaddr en0", function(ip)
 		local connected = not (ip == "")
 		wifi:set({
