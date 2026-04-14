@@ -5,6 +5,8 @@ local conf = require("telescope.config").values
 
 local M = {}
 
+local cached_glob = ""
+
 local live_multigrep = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd or vim.uv.cwd()
@@ -16,15 +18,21 @@ local live_multigrep = function(opts)
       end
 
       local pieces = vim.split(prompt, "  ")
-      local args = { "rg" }
-      if pieces[1] then
-        table.insert(args, "-e")
-        table.insert(args, pieces[1])
+      local search = pieces[1]
+
+      if not search or search == "" then
+        return nil
       end
 
-      if pieces[2] then
+      local glob = pieces[2]
+      if glob and glob ~= "" then
+        cached_glob = glob
+      end
+
+      local args = { "rg", "-e", search }
+      if glob and glob ~= "" then
         table.insert(args, "-g")
-        table.insert(args, pieces[2])
+        table.insert(args, glob)
       end
 
       ---@diagnostic disable-next-line: deprecated
@@ -37,13 +45,23 @@ local live_multigrep = function(opts)
     cwd = opts.cwd,
   }
 
+  local default_text = cached_glob ~= "" and ("  " .. cached_glob) or ""
+
   pickers
     .new(opts, {
       debounce = 100,
-      prompt_title = "Multi grep",
+      prompt_title = "Search  |  Glob",
+      default_text = default_text,
       finder = finder,
       previewer = conf.grep_previewer(opts),
       sorter = require("telescope.sorters").empty {},
+      attach_mappings = function()
+        vim.schedule(function()
+          local keys = vim.api.nvim_replace_termcodes("<Home>", true, false, true)
+          vim.api.nvim_feedkeys(keys, "n", false)
+        end)
+        return true
+      end,
     })
     :find()
 end

@@ -193,6 +193,7 @@ vim.lsp.config.gopls = {
       completeUnimported = true,
       usePlaceholders = false,
       staticcheck = true, -- Enable additional static analysis
+      buildFlags = { "-tags=unit,integration" }, -- Include unit and integration test files
       analyses = {
         unusedparams = true, -- Detect unused parameters
         nilness = true, -- Check for nil-related issues

@@ -15,7 +15,7 @@ reporoot() {
 
 move_from_downloads() {
   local files
-  files=("${(@f)$(find "$HOME/Downloads" -maxdepth 1 -type f | fzf -m)}") || return
+  files=("${(@f)$(find "$HOME/Downloads" -maxdepth 1 -type f -print0 | xargs -0 ls -t | fzf -m)}") || return
 
   for f in $files; do
     mv -- "$f" .
