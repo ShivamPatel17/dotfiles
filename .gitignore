@@ -2,3 +2,4 @@
 zsh/.config/zsh/.zsh_plugins/*
 nvim/.config/nvim/lua/local/*
 *.idea
+mise/.config/mise/config.local.toml

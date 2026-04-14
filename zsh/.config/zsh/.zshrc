@@ -11,6 +11,13 @@ setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 
+add_path "/opt/homebrew/bin"
+add_path "$HOME/bin"
+add_path "$HOME/.config/bin"
+add_path "/usr/local/bin"
+add_path "$HOME/.local/bin"
+add_path "~/.local/bin"
+
 # Define the ZSHELLRCS directory
 export ZSHELLRCS="$HOME/repos/dotfiles/zsh/.config/zsh/zshrcs"
 
@@ -22,9 +29,3 @@ if [ -d "${ZSHELLRCS}" ]; then
 else
     echo "Directory ${ZSHELLRCS} does not exist"
 fi
-
-add_path "/opt/homebrew/bin"
-add_path "$HOME/bin"
-add_path "$HOME/.config/bin"
-add_path "/usr/local/bin"
-add_path "$HOME/.local/bin"
