@@ -1,5 +1,6 @@
 [tools]
 bat = "latest"
+bun = "latest"
 cargo = "latest"
 fzf = "latest"
 gh = "latest"
@@ -12,3 +13,6 @@ rg = "latest"
 rust = "latest"
 stylua = "latest"
 zoxide = "latest"
+
+[settings]
+experimental = true
