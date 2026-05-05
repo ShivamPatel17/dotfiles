@@ -213,7 +213,7 @@ vim.lsp.enable "gopls"
 
 -- Ruby
 vim.lsp.config.solargraph = {
-  cmd = { "mise", "exec", "--", "bundle", "exec", "solargraph", "stdio" },
+  cmd = { "sh", "-c", "eval \"$(mise activate --shims)\" && bundle exec solargraph stdio" },
   filetypes = { "ruby" },
   root_markers = { "Gemfile", ".git", vim.uv.cwd() },
   settings = {
