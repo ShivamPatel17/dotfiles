@@ -37,18 +37,17 @@ return {
         },
         file_ignore_patterns = { "%.git/", "node_modules", ".zsh_history" },
         prompt_prefix = "",
-        layout_strategy = "horizontal",
+        path_display = { shorten = { len = 1, exclude = { -1 } } },
+        layout_strategy = "vertical",
         layout_config = {
-          horizontal = {
-            prompt_position = "top", -- Places the prompt (grep input) at the top
-            preview_width = 0.5, -- Adjust preview area width
-          },
           vertical = {
-            mirror = false, -- Disable mirroring for vertical layout
+            prompt_position = "top",
+            preview_height = 0.4,
+            mirror = true, -- prompt and results on top, preview below
           },
-          width = 0.95, -- Width of Telescope window
-          height = 0.8, -- Height of Telescope window
-          preview_cutoff = 120, -- When to disable preview based on window width
+          width = 0.95,
+          height = 0.95,
+          preview_cutoff = 20, -- Hide preview only in very short windows
         },
       },
       pickers = {
