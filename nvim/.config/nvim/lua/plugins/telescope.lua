@@ -10,14 +10,6 @@ return {
       desc = "telescope multi Grep",
     },
   },
-  init = function()
-    -- This runs during startup before lazy loading
-    -- Set up the keybinding immediately
-    vim.keymap.set("n", "<leader>fw", function()
-      -- Then call your custom function
-      require("custom.telescope.multigrep").live_multigrep()
-    end, { desc = "Multi grep (works from startup)" })
-  end,
   config = function()
     -- Initialize the global variable to false if not already set
     vim.g.telescope_grep_hidden = vim.g.telescope_grep_hidden or true

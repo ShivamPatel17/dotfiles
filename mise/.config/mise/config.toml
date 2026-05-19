@@ -12,6 +12,7 @@ python = "latest"
 rg = "latest"
 rust = "latest"
 stylua = "latest"
+zig = "0.15.2"
 zoxide = "latest"
 
 [settings]

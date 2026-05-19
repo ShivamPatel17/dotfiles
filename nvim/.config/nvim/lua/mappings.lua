@@ -78,6 +78,11 @@ vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
 vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
 vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
+-- Telescope overrides (must be after nvchad.mappings to take precedence)
+map("n", "<leader>fw", function()
+  require("custom.telescope.multigrep").live_multigrep()
+end, { desc = "Multi grep with glob" })
+
 -- Diagnostics
 map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
 
