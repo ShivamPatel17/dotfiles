@@ -37,7 +37,12 @@ map("n", "<leader>tn", ":tabnew<CR>", { desc = "New Tab" }) -- Open a new tab
 map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close Tab" }) -- Close the current tab
 map("n", "<leader>to", ":tabonly<CR>", { desc = "Close Other Tabs" }) -- Close all other tabs
 map("n", "<leader>tl", ":tabnext<CR>", { desc = "Next Tab" }) -- Go to the next tab
-map("n", "<leader>th", ":tabprevious<CR>", { desc = "Previous Tab" }) -- Go to the previous tab
+map({ "n", "t" }, "<leader>th", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "Toggle horizontal terminal" })
+map({ "n", "t" }, "<leader>tv", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+end, { desc = "Toggle vertical terminal" })
 map("n", "<leader>tm", ":tabmove<Space>", { desc = "Move Tab" }) -- Move tab (follow with position)
 
 -- Split navigation
