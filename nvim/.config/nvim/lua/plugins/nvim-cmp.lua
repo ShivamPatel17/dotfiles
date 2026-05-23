@@ -1,5 +1,7 @@
--- Example: lua/plugins/init.lua
 local plugins = {
+  -- Disable LuaSnip and its cmp source
+  { "L3MON4D3/LuaSnip", enabled = false },
+  { "saadparwaiz1/cmp_luasnip", enabled = false },
 
   -- Override nvim-cmp
   {
@@ -8,17 +10,37 @@ local plugins = {
       local M = require "nvchad.configs.cmp"
       local cmp = require "cmp"
 
-      -- Setting to nil removes it from the table
-      M.mapping["<C-n>"] = nil
+      -- Remove luasnip source
+      M.sources = vim.tbl_filter(function(s)
+        return s.name ~= "luasnip"
+      end, M.sources)
 
-      -- -- Setting to cmp.config.disable ensures it's completely ignored
-      -- M.mapping["<C-n>"] = cmp.config.disable
+      -- Use Neovim's built-in snippet engine instead of luasnip
+      M.snippet = {
+        expand = function(args)
+          vim.snippet.expand(args.body)
+        end,
+      }
+
+      M.mapping["<C-n>"] = nil
+      M.mapping["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, { "i", "s" })
+      M.mapping["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { "i", "s" })
 
       return M
     end,
   },
-
-  -- Your other plugins...
 }
 
 return plugins

@@ -131,28 +131,22 @@ vim.lsp.config.lua_ls = {
 vim.lsp.enable "lua_ls"
 
 -- Python
-vim.lsp.config.basedpyright = {
-  name = "basedpyright",
+vim.lsp.config.pyright = {
+  name = "pyright",
   filetypes = { "python" },
-  cmd = { "basedpyright-langserver", "--stdio" },
+  cmd = { "pyright-langserver", "--stdio" },
   settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
     python = {
       venvPath = vim.fn.expand "~" .. "/.virtualenvs",
-    },
-    basedpyright = {
-      disableOrganizeImports = true,
       analysis = {
         autoSearchPaths = true,
         autoImportCompletions = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = "openFilesOnly",
         typeCheckingMode = "strict",
-        inlayHints = {
-          variableTypes = false,
-          callArgumentNames = true,
-          functionReturnTypes = true,
-          genericTypes = false,
-        },
       },
     },
   },
@@ -161,10 +155,6 @@ vim.lsp.config.basedpyright = {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
-    local ok, venv = pcall(require, "rj.extras.venv")
-    if ok then
-      venv.setup()
-    end
     local root = vim.fs.root(0, {
       "pyproject.toml",
       "setup.py",
@@ -176,7 +166,7 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.uv.cwd(),
     })
     local client =
-      vim.lsp.start(vim.tbl_extend("force", vim.lsp.config.basedpyright, { root_dir = root }), { attach = false })
+      vim.lsp.start(vim.tbl_extend("force", vim.lsp.config.pyright, { root_dir = root }), { attach = false })
     if client then
       vim.lsp.buf_attach_client(0, client)
     end

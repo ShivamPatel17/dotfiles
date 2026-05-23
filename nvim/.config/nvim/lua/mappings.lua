@@ -86,10 +86,6 @@ end, { desc = "Multi grep with glob" })
 -- Diagnostics
 map("n", "<leader>dsa", ":Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
 
-map("v", "<leader>r", "<Plug>SnipRun", { silent = true })
-map("n", "<leader>r", "<Plug>SnipRun", { silent = true })
-map("n", "<leader>rc", "<Plug>SnipClose", { silent = true })
-
 -- LSP
 map("n", "gb", "<C-o>", { desc = "LSP Go back" })
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "LSP Go to references" })
