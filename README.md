@@ -71,3 +71,4 @@
   - `brew install asmvik/formulae/skhd`
   - `brew tap FelixKratz/formulae & brew install borders`
 - then ran `mise install`
+- installed Docker (Docker Desktop)
