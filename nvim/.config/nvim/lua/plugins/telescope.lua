@@ -29,7 +29,15 @@ return {
         },
         file_ignore_patterns = { "%.git/", "node_modules", ".zsh_history" },
         prompt_prefix = "",
-        path_display = { shorten = { len = 1, exclude = { -1 } } },
+        path_display = function(_, path)
+          local cols = vim.o.columns
+          local win_width = math.floor(cols * 0.95) -- matches layout_config.width
+          if #path > win_width * 0.6 then
+            local Path = require("plenary.path")
+            return Path:new(path):shorten(1, { -1 })
+          end
+          return path
+        end,
         layout_strategy = "vertical",
         layout_config = {
           vertical = {
