@@ -19,7 +19,7 @@ return {
         visual_send = "<leader>sc",
         send_file = "<leader>sf",
         send_line = "<leader>sl",
-        send_paragraph = "<leader>sp",
+        send_paragraph = "<leader>sa",
         cr = "<leader>s<cr>",
         interrupt = "<leader>s<space>",
         exit = "<leader>sq",
