@@ -30,7 +30,7 @@ ollama serve
 | `phi4-mini` | ~2.5GB | `ollama pull phi4-mini` | Strong reasoning for size |
 | `llama3.2:3b` | ~2GB | `ollama pull llama3.2:3b` | Meta's small model |
 | `gemma3:4b` | ~3GB | `ollama pull gemma3:4b` | Google's efficient model |
-| `gemma4:12b` | ~8GB | `ollama pull gemma4:12b` | Multimodal, vision + text |
+| `gemma4:e4b` | ~8GB | `ollama pull gemma4:e4b` | Multimodal, vision + text |
 | `mistral:7b` | ~4GB | `ollama pull mistral:7b` | Best quality-to-size ratio |
 
 ### Coding Models

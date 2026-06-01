@@ -62,11 +62,8 @@
         "qwen2.5-coder:3b": {
           "name": "qwen2.5-coder:3b"
         },
-        "deepseek-coder-v2:16b": {
-          "name": "deepseek-coder-v2:16b"
-        },
-        "codellama:7b": {
-          "name": "codellama:7b"
+        "gemma4:e4b": {
+          "name": "gemma4:e4b"
         }
       }
     }
