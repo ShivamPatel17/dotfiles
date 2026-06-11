@@ -13,6 +13,7 @@ return {
       "proto",
       "ruby",
       "yaml",
+      "python",
     },
     disable = function(lang, buf)
       local max_filesize = 100 * 1024 -- 100 KB

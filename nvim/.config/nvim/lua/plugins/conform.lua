@@ -19,6 +19,7 @@ return {
           proto = { "buf" },
           toml = { "taplo" },
           yaml = { "prettier" },
+          python = { "ruff_format" },
         },
         format_on_save = {
           enabled = true,
