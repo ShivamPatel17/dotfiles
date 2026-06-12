@@ -2,6 +2,17 @@
 	name = "Shivam"
 	email = =
 	signingkey = /Users/shivampatel/.ssh/id_ed25519.pub
+
+[delta]
+  side-by-side = true
+  line-numbers = true
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+
 [column]
 	ui = auto
 [branch]
@@ -40,8 +51,7 @@
   lg = log --oneline --graph --decorate # View Git log in one-line format
   trim = remote prune origin
   org = "!git fetch origin && git reset --hard origin/$(git branch --show-current)" # reset to origin
-[pager]
-	branch = false
+
 [core]
 	editor = nvim
 ; need to disable this url config for wezterm plugins the first time you're installing them (or reinstalling)

@@ -2,6 +2,7 @@
 bat = "latest"
 bun = "latest"
 cargo = "latest"
+delta = "latest"
 fzf = "latest"
 gh = "latest"
 go = "latest"
