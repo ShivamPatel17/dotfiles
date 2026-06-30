@@ -1,7 +1,7 @@
 [user]
 	name = "Shivam"
 	email = =
-	signingkey = /Users/shivampatel/.ssh/id_ed25519.pub
+	signingkey = /Users/shivam.patel/.ssh/id_ed25519.pub
 
 [delta]
   side-by-side = true
