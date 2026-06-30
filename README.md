@@ -18,7 +18,6 @@
 #### [Stow](https://www.gnu.org/software/stow/)
 
 - all configuration is set up to be stow'd
-
   - every folder in this repo should be stowable (symlinked)
   - example: `stow -t ~ nvim` (`stow -t <target_dir> <directory_you_want_to_stow>`)
     - so everything in the `/nvim` will get copied over to `~`
@@ -58,7 +57,7 @@
 
 - still need to figure out all the dependencies for my set up. For now, I'll throw them into a list here as I see fit and long term I'd like to have a script that installs all dependencies in one full sweep
 
-# Notes from a fresh set up 
+# Notes from a fresh set up
 
 - `brew install --cask wezterm` (GUI app)
 - `brew install wezterm` (CLI)
@@ -72,3 +71,7 @@
   - `brew tap FelixKratz/formulae & brew install borders`
 - then ran `mise install`
 - installed Docker (Docker Desktop)
+
+## What to try on the next fresh set up
+
+- https://www.mikekasberg.com/blog/2026/01/31/dotfiles-secrets-in-chezmoi.html

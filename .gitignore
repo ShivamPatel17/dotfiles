@@ -4,3 +4,4 @@ nvim/.config/nvim/lua/local/*
 *.idea
 mise/.config/mise/config.local.toml
 zsh/.config/zsh/.zsh_sessions/*
+gnupg*
