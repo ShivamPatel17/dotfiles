@@ -71,6 +71,11 @@
   - `brew tap FelixKratz/formulae & brew install borders`
 - then ran `mise install`
 - installed Docker (Docker Desktop)
+- dealing with breaking changes from going to nvim v0.12
+  1. Change nvim-treesitter plugin branch from master to main
+  2. Install tree-sitter-cli (brew install tree-sitter-cli) — version 0.26.1+
+  3. :Lazy update nvim-treesitter
+  4. :TSUpdate to recompile parsers
 
 ## What to try on the next fresh set up
 

@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",
+  branch = "main",
   opts = {
     ensure_installed = {
       "go",
