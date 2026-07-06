@@ -1,6 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" }, -- Ensure plenary.nvim is installed
+  cmd = { "Telescope" },
   keys = {
     {
       "<leader>fw", -- need to load Telescope before this works
@@ -52,8 +53,8 @@ return {
       },
       pickers = {
         find_files = {
-          hidden = true, -- Set hidden=true by default for find_files picker
-          no_ignore = false, -- Do not ignore files from .gitignore
+          hidden = true,
+          no_ignore = true,
         },
         live_grep = {
           additional_args = function()
