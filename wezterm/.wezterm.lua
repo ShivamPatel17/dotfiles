@@ -104,8 +104,25 @@ config.keys = {
 						if not id or id == "" then
 							return
 						end
-						local cwd = id:gsub("^~", os.getenv("HOME") or "")
-						window:perform_action(act.SwitchToWorkspace({ name = id, spawn = { cwd = cwd } }), inner_pane)
+						local target = claude_agents.find_pane(tonumber(id))
+						if not target then
+							return
+						end
+						wezterm.GLOBAL.previous_workspace = window:active_workspace()
+						window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
+						for _, mux_win in ipairs(wezterm.mux.all_windows()) do
+							if mux_win:get_workspace() == target.workspace then
+								for _, tab in ipairs(mux_win:tabs()) do
+									for _, p in ipairs(tab:panes()) do
+										if p:pane_id() == target.pane_id then
+											tab:set_as_active()
+											p:activate()
+											return
+										end
+									end
+								end
+							end
+						end
 					end),
 					title = "Claude Code Agents",
 					description = "Active agents across workspaces",

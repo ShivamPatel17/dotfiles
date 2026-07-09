@@ -164,12 +164,39 @@ function M.get_choices()
 			{ Text = name },
 		})
 		table.insert(choices, {
-			id = shorten_home(row.agent.cwd or ""),
+			id = tostring(row.agent.pid),
 			label = label,
 		})
 	end
 
 	return choices
+end
+
+function M.find_pane(pid)
+	local success, tty_out = wezterm.run_child_process({ "ps", "-o", "tty=", "-p", tostring(pid) })
+	if not success or not tty_out or tty_out:match("^%s*$") then
+		return nil
+	end
+
+	local tty = "/dev/" .. tty_out:gsub("%s+", "")
+
+	local ok_list, list_json = wezterm.run_child_process({ "wezterm", "cli", "list", "--format", "json" })
+	if not ok_list or not list_json then
+		return nil
+	end
+
+	local ok_parse, panes = pcall(wezterm.json_parse, list_json)
+	if not ok_parse or type(panes) ~= "table" then
+		return nil
+	end
+
+	for _, p in ipairs(panes) do
+		if p.tty_name == tty then
+			return { pane_id = p.pane_id, workspace = p.workspace }
+		end
+	end
+
+	return nil
 end
 
 return M
