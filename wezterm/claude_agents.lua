@@ -151,6 +151,16 @@ function M.get_choices()
 		end
 	end
 
+	local visits = wezterm.GLOBAL.claude_agent_visits or {}
+	table.sort(rows, function(a, b)
+		local a_visit = visits[tostring(a.agent.pid)] or 0
+		local b_visit = visits[tostring(b.agent.pid)] or 0
+		if a_visit ~= b_visit then
+			return a_visit > b_visit
+		end
+		return a.ws < b.ws
+	end)
+
 	local choices = {}
 	for _, row in ipairs(rows) do
 		local name = row.agent.name or "unnamed"
@@ -170,6 +180,13 @@ function M.get_choices()
 	end
 
 	return choices
+end
+
+function M.record_visit(pid)
+	if not wezterm.GLOBAL.claude_agent_visits then
+		wezterm.GLOBAL.claude_agent_visits = {}
+	end
+	wezterm.GLOBAL.claude_agent_visits[tostring(pid)] = os.time()
 end
 
 function M.find_pane(pid)

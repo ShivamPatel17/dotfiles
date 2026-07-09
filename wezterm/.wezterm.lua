@@ -53,7 +53,20 @@ config.keys = {
 	{
 		key = "l",
 		mods = "LEADER",
-		action = workspace_switcher.switch_to_prev_workspace(),
+		action = wezterm.action_callback(function(window, pane)
+			local prev = wezterm.GLOBAL.claude_prev_pane
+			if not prev then
+				window:perform_action(workspace_switcher.switch_to_prev_workspace(), pane)
+				return
+			end
+			local current_ws = window:active_workspace()
+			local current_pane_id = pane:pane_id()
+			wezterm.GLOBAL.claude_prev_pane = { workspace = current_ws, pane_id = current_pane_id }
+			if prev.workspace ~= current_ws then
+				window:perform_action(act.SwitchToWorkspace({ name = prev.workspace }), pane)
+			end
+			wezterm.run_child_process({ "wezterm", "cli", "activate-pane", "--pane-id", tostring(prev.pane_id) })
+		end),
 	},
 	{
 		key = "-",
@@ -108,8 +121,14 @@ config.keys = {
 						if not target then
 							return
 						end
-						wezterm.GLOBAL.previous_workspace = window:active_workspace()
-						window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
+						claude_agents.record_visit(tonumber(id))
+						local current_ws = window:active_workspace()
+						local current_pane_id = pane:pane_id()
+						wezterm.GLOBAL.claude_prev_pane = { workspace = current_ws, pane_id = current_pane_id }
+						if target.workspace ~= current_ws then
+							wezterm.GLOBAL.previous_workspace = current_ws
+							window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
+						end
 						wezterm.run_child_process({ "wezterm", "cli", "activate-pane", "--pane-id", tostring(target.pane_id) })
 					end),
 					title = "Claude Code Agents",
@@ -177,16 +196,7 @@ tabline.setup({
 	},
 	sections = {
 		tabline_a = { "workspace" },
-		tabline_b = { "" },
-		tabline_c = { "" },
-		tab_active = {
-			"[",
-			"index",
-			"]",
-			{ "zoomed", padding = 0 },
-		},
-		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = {
+		tabline_b = {
 			function()
 				local ok, summary = pcall(claude_agents.summary)
 				if not ok or not summary or summary == "" then
@@ -195,6 +205,15 @@ tabline.setup({
 				return " " .. summary .. " "
 			end,
 		},
+		tabline_c = { "" },
+		tab_active = {
+			"[",
+			"index",
+			"]",
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "" },
 		tabline_y = { "" },
 		tabline_z = { "" },
 	},
