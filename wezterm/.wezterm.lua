@@ -110,19 +110,7 @@ config.keys = {
 						end
 						wezterm.GLOBAL.previous_workspace = window:active_workspace()
 						window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
-						for _, mux_win in ipairs(wezterm.mux.all_windows()) do
-							if mux_win:get_workspace() == target.workspace then
-								for _, tab in ipairs(mux_win:tabs()) do
-									for _, p in ipairs(tab:panes()) do
-										if p:pane_id() == target.pane_id then
-											tab:set_as_active()
-											p:activate()
-											return
-										end
-									end
-								end
-							end
-						end
+						wezterm.run_child_process({ "wezterm", "cli", "activate-pane", "--pane-id", tostring(target.pane_id) })
 					end),
 					title = "Claude Code Agents",
 					description = "Active agents across workspaces",
