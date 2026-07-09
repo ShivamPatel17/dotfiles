@@ -202,7 +202,7 @@ tabline.setup({
 				if not ok or not summary or summary == "" then
 					return ""
 				end
-				return " " .. summary .. " "
+				return summary
 			end,
 		},
 		tabline_c = { "" },

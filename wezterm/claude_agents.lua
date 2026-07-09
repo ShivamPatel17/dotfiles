@@ -79,29 +79,17 @@ function M.summary()
 	end
 
 	local order = { "busy", "waiting", "idle" }
-	local shown = {}
-	local formatted = {}
-	for _, s in ipairs(order) do
-		if counts[s] then
-			table.insert(formatted, { s, counts[s] })
-			shown[s] = true
-		end
-	end
-	for s, c in pairs(counts) do
-		if not shown[s] then
-			table.insert(formatted, { s, c })
-		end
-	end
-
 	local parts = {}
-	for i, entry in ipairs(formatted) do
-		local status, count = entry[1], entry[2]
-		table.insert(parts, { Foreground = { Color = STATUS_COLORS[status] or DEFAULT_STATUS_COLOR } })
-		table.insert(parts, { Text = count .. string.upper(status:sub(1, 1)) })
-		if i < #formatted then
+	for i, s in ipairs(order) do
+		local count = counts[s] or 0
+		local text = string.format("%2d%s", count, string.upper(s:sub(1, 1)))
+		table.insert(parts, { Foreground = { Color = STATUS_COLORS[s] or DEFAULT_STATUS_COLOR } })
+		table.insert(parts, { Text = text })
+		if i < #order then
 			table.insert(parts, { Text = " " })
 		end
 	end
+	table.insert(parts, { Text = " " })
 
 	return wezterm.format(parts)
 end
