@@ -40,6 +40,88 @@ In addition to possessing all the features of the aforementioned configuration, 
 
 9. Go to "Settings" -> "Control Center" -> "Automatically hide and show the menu bar" and change its value to "Always."
 
+## Starting and Stopping SketchyBar
+
+**Normal day-to-day (via AeroSpace):**
+
+SketchyBar starts automatically whenever [AeroSpace](https://github.com/nikitabobko/AeroSpace) starts, via `after-startup-command` in `~/.aerospace.toml`:
+
+```toml
+after-startup-command = [
+  'exec-and-forget borders',
+  'exec-and-forget sketchybar',
+]
+```
+
+To restart AeroSpace (which re-fires this hook): `aerospace restart-aerospace`.
+
+Note: this only fires on AeroSpace's own startup, not when SketchyBar dies on its own. If you kill SketchyBar manually, you need to manually restart it too (or restart AeroSpace).
+
+**Manual start/stop:**
+
+```bash
+# Start
+sketchybar &
+
+# Stop
+killall sketchybar
+
+# Reload config only (no full restart)
+sketchybar --reload
+```
+
+**Wake-from-sleep:**
+
+Nothing to do — the LaunchAgent described below handles kill + restart automatically. To manually trigger that same kill+restart logic (e.g. for testing): `bash ~/.config/sketchybar/plugins/restart_on_wake.sh`.
+
+**Check status:**
+
+```bash
+pgrep -x sketchybar && echo running || echo not running
+```
+
+## Wake-from-Sleep Auto-Restart
+
+SketchyBar can hang the system when waking from sleep, likely due to network-dependent widgets (weather, wifi) firing before the network is ready. A LaunchAgent is included that automatically kills and restarts SketchyBar on wake.
+
+**How it works:**
+
+- `~/Library/LaunchAgents/com.shivam.sketchybar-restart-on-wake.plist` listens for macOS power state change notifications (`com.apple.powermanagement.systempowerstate`) via the `com.apple.notifyd.matching` XPC event.
+- When triggered, it runs `plugins/restart_on_wake.sh`, which waits 3 seconds for the system to stabilize, kills sketchybar, then restarts it via `exec`.
+- The script uses `exec /opt/homebrew/bin/sketchybar` rather than backgrounding it with `&`. launchd tears down a job's entire process group as soon as its script exits, so a backgrounded `sketchybar &` followed by the script returning would get killed along with the script. `exec` replaces the script's own process with sketchybar, so it becomes the job itself and survives.
+
+**Files:**
+
+| File | Purpose |
+| ---- | ------- |
+| `plugins/restart_on_wake.sh` | Kill + restart script with a 3s delay |
+| `Library/LaunchAgents/com.shivam.sketchybar-restart-on-wake.plist` | LaunchAgent plist (symlinked via stow) |
+
+**Managing the agent:**
+
+```bash
+# Load (already done on stow + first setup)
+launchctl load ~/Library/LaunchAgents/com.shivam.sketchybar-restart-on-wake.plist
+
+# Unload
+launchctl unload ~/Library/LaunchAgents/com.shivam.sketchybar-restart-on-wake.plist
+
+# Check status
+launchctl list | grep sketchybar
+
+# View logs
+cat /tmp/sketchybar-restart-on-wake.log
+```
+
+**Troubleshooting:**
+
+- If sketchybar still hangs, try increasing the `sleep 3` in `restart_on_wake.sh` to 5 or more seconds.
+- If the agent isn't firing, verify the symlink exists: `ls -la ~/Library/LaunchAgents/com.shivam.sketchybar-restart-on-wake.plist`
+- After editing the plist, unload and reload it for changes to take effect.
+- After editing `restart_on_wake.sh`, no reload is needed — the LaunchAgent re-reads the script from disk each time it fires.
+- If sketchybar doesn't come back after wake, check that `restart_on_wake.sh` ends with `exec sketchybar` and not `sketchybar &`; the latter gets killed when the script exits (see "How it works" above).
+- This LaunchAgent only fires on sleep/wake — it does not start sketchybar on login/boot. If sketchybar isn't running at all (e.g. `pgrep -x sketchybar` returns nothing), start it manually or via `brew services start sketchybar`.
+
 ## Configuration
 
 The default configuration values are defined in full [here](settings.lua). You may overwrite any or all of them by creating a `config.json` file in the root directory of the project.
