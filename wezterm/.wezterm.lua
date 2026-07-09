@@ -189,7 +189,11 @@ tabline.setup({
 		icons_enabled = true,
 		theme = "Dracula",
 		tabs_enabled = true,
-		theme_overrides = {},
+		theme_overrides = {
+			normal_mode = {
+				b = { bg = "#1C2024" },
+			},
+		},
 		section_separators = "",
 		component_separators = "",
 		tab_separators = "",
