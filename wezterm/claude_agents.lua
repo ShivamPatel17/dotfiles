@@ -59,6 +59,7 @@ end
 
 local STATUS_COLORS = {
 	busy = "#FFB86C",
+	waiting = "#FF5555",
 	idle = "#6272A4",
 }
 local DEFAULT_STATUS_COLOR = "#F1FA8C"
@@ -77,7 +78,7 @@ function M.summary()
 		end
 	end
 
-	local order = { "busy", "idle" }
+	local order = { "busy", "waiting", "idle" }
 	local shown = {}
 	local formatted = {}
 	for _, s in ipairs(order) do
@@ -127,11 +128,6 @@ function M.get_choices()
 	end
 	table.sort(ws_names)
 
-	local STATUS_COLORS = {
-		busy = "#FFB86C",
-		idle = "#6272A4",
-	}
-	local DEFAULT_STATUS_COLOR = "#F1FA8C"
 	local WORKSPACE_COLOR = "#BD93F9"
 	local NAME_COLOR = "#F8F8F2"
 
@@ -142,7 +138,7 @@ function M.get_choices()
 	for _, ws in ipairs(ws_names) do
 		for _, agent in ipairs(by_workspace[ws]) do
 			local status = agent.status or "unknown"
-			local status_icon = status == "busy" and "●" or "○"
+			local status_icon = status == "busy" and "●" or status == "waiting" and "◉" or "○"
 			local status_text = string.format("%s [%s]", status_icon, status)
 			status_width = math.max(status_width, #status_text)
 			workspace_width = math.max(workspace_width, #ws)
