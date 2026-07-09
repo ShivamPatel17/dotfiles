@@ -181,16 +181,16 @@ tabline.setup({
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = { "" },
-		tabline_y = {
+		tabline_x = {
 			function()
 				local ok, summary = pcall(claude_agents.summary)
 				if not ok or not summary or summary == "" then
 					return ""
 				end
-				return " " .. summary
+				return " " .. summary .. " "
 			end,
 		},
+		tabline_y = { "" },
 		tabline_z = { "" },
 	},
 	extensions = {},

@@ -57,6 +57,12 @@ function M.poll()
 	return parsed
 end
 
+local STATUS_COLORS = {
+	busy = "#FFB86C",
+	idle = "#6272A4",
+}
+local DEFAULT_STATUS_COLOR = "#F1FA8C"
+
 function M.summary()
 	local agents = M.poll()
 	if #agents == 0 then
@@ -71,22 +77,32 @@ function M.summary()
 		end
 	end
 
-	local parts = {}
 	local order = { "busy", "idle" }
 	local shown = {}
+	local formatted = {}
 	for _, s in ipairs(order) do
 		if counts[s] then
-			table.insert(parts, counts[s] .. string.upper(s:sub(1, 1)))
+			table.insert(formatted, { s, counts[s] })
 			shown[s] = true
 		end
 	end
 	for s, c in pairs(counts) do
 		if not shown[s] then
-			table.insert(parts, c .. string.upper(s:sub(1, 1)))
+			table.insert(formatted, { s, c })
 		end
 	end
 
-	return table.concat(parts, " ")
+	local parts = {}
+	for i, entry in ipairs(formatted) do
+		local status, count = entry[1], entry[2]
+		table.insert(parts, { Foreground = { Color = STATUS_COLORS[status] or DEFAULT_STATUS_COLOR } })
+		table.insert(parts, { Text = count .. string.upper(status:sub(1, 1)) })
+		if i < #formatted then
+			table.insert(parts, { Text = " " })
+		end
+	end
+
+	return wezterm.format(parts)
 end
 
 function M.get_choices()
@@ -105,24 +121,56 @@ function M.get_choices()
 		::continue::
 	end
 
-	local choices = {}
 	local ws_names = {}
 	for ws, _ in pairs(by_workspace) do
 		table.insert(ws_names, ws)
 	end
 	table.sort(ws_names)
 
+	local STATUS_COLORS = {
+		busy = "#FFB86C",
+		idle = "#6272A4",
+	}
+	local DEFAULT_STATUS_COLOR = "#F1FA8C"
+	local WORKSPACE_COLOR = "#BD93F9"
+	local NAME_COLOR = "#F8F8F2"
+
+	-- gather rows first so status/workspace columns can be aligned
+	local rows = {}
+	local status_width = 0
+	local workspace_width = 0
 	for _, ws in ipairs(ws_names) do
-		local ws_agents = by_workspace[ws]
-		for _, agent in ipairs(ws_agents) do
-			local status_icon = agent.status == "busy" and "●" or "○"
-			local name = agent.name or "unnamed"
-			local label = string.format("%s %s  [%s]  %s", status_icon, name, agent.status, ws)
-			table.insert(choices, {
-				id = shorten_home(agent.cwd or ""),
-				label = label,
+		for _, agent in ipairs(by_workspace[ws]) do
+			local status = agent.status or "unknown"
+			local status_icon = status == "busy" and "●" or "○"
+			local status_text = string.format("%s [%s]", status_icon, status)
+			status_width = math.max(status_width, #status_text)
+			workspace_width = math.max(workspace_width, #ws)
+			table.insert(rows, {
+				agent = agent,
+				ws = ws,
+				status = status,
+				status_text = status_text,
 			})
 		end
+	end
+
+	local choices = {}
+	for _, row in ipairs(rows) do
+		local name = row.agent.name or "unnamed"
+		local status_color = STATUS_COLORS[row.status] or DEFAULT_STATUS_COLOR
+		local label = wezterm.format({
+			{ Foreground = { Color = status_color } },
+			{ Text = row.status_text .. string.rep(" ", status_width - #row.status_text) .. "  " },
+			{ Foreground = { Color = WORKSPACE_COLOR } },
+			{ Text = row.ws .. string.rep(" ", workspace_width - #row.ws) .. "  " },
+			{ Foreground = { Color = NAME_COLOR } },
+			{ Text = name },
+		})
+		table.insert(choices, {
+			id = shorten_home(row.agent.cwd or ""),
+			label = label,
+		})
 	end
 
 	return choices
