@@ -1,6 +1,11 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local home = os.getenv("HOME") or ""
+package.path = package.path .. ";" .. home .. "/?.lua;" .. home .. "/repos/dotfiles/wezterm/?.lua"
+
+local claude_agents = require("claude_agents")
+
 local config = wezterm.config_builder()
 local act = wezterm.action
 
@@ -83,6 +88,36 @@ config.keys = {
 	-- rotate panes
 	{ key = "n", mods = "LEADER", action = act.RotatePanes("CounterClockwise") },
 
+	-- claude agents panel
+	{
+		key = "a",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			local choices = claude_agents.get_choices()
+			if #choices == 0 then
+				window:toast_notification("Claude Agents", "No agents running", nil, 3000)
+				return
+			end
+			window:perform_action(
+				act.InputSelector({
+					action = wezterm.action_callback(function(_, inner_pane, id, label)
+						if not id or id == "" then
+							return
+						end
+						local cwd = id:gsub("^~", os.getenv("HOME") or "")
+						window:perform_action(act.SwitchToWorkspace({ name = id, spawn = { cwd = cwd } }), inner_pane)
+					end),
+					title = "Claude Code Agents",
+					description = "Active agents across workspaces",
+					fuzzy_description = "Filter agents: ",
+					choices = choices,
+					fuzzy = true,
+				}),
+				pane
+			)
+		end),
+	},
+
 	-- move between split panes
 	move_pane("h"),
 	move_pane("j"),
@@ -147,7 +182,15 @@ tabline.setup({
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
 		tabline_x = { "" },
-		tabline_y = { "" },
+		tabline_y = {
+			function()
+				local ok, summary = pcall(claude_agents.summary)
+				if not ok or not summary or summary == "" then
+					return ""
+				end
+				return " " .. summary
+			end,
+		},
 		tabline_z = { "" },
 	},
 	extensions = {},
