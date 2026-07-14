@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.env.local
+.claude/
+mise.local.toml

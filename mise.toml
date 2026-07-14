@@ -4,3 +4,15 @@ node = "latest"
 python = "latest"
 rust = "latest"
 stylua = "latest"
+
+[tasks.stow]
+description = "Stow dotfile packages to ~"
+run = "./scripts/stowdf $@"
+
+[tasks.unstow]
+description = "Unstow dotfile packages from ~"
+run = "./scripts/stowdf -D $@"
+
+[tasks.bootstrap]
+description = "Bootstrap a fresh machine"
+run = "echo TODO"
