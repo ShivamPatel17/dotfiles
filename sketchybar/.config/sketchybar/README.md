@@ -80,6 +80,8 @@ Nothing to do — the LaunchAgent described below handles kill + restart automat
 pgrep -x sketchybar && echo running || echo not running
 ```
 
+**A note on Lua:** this machine has two separate Lua installs — Homebrew's (`/opt/homebrew/bin/lua`) and mise's (pinned via `lua = "latest"` in `~/.config/mise/config.toml`), each with its own rocks tree. `sketchybarrc`'s shebang is pinned directly to `/opt/homebrew/bin/lua` (rather than `#!/usr/bin/env lua`) so SketchyBar always resolves the same interpreter and rocks tree, regardless of which Lua is first on `PATH` in the invoking shell. If you ever see a `module '<name>' not found` error (e.g. `lunajson`), reinstall it into Homebrew's tree specifically: `luarocks install <name> --tree=/opt/homebrew` (no sudo needed since you own that directory).
+
 ## Wake-from-Sleep Auto-Restart
 
 SketchyBar can hang the system when waking from sleep, likely due to network-dependent widgets (weather, wifi) firing before the network is ready. A LaunchAgent is included that automatically kills and restarts SketchyBar on wake.

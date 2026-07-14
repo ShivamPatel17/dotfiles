@@ -149,6 +149,16 @@ config.keys = {
 	move_pane("l"),
 }
 
+wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, _, _)
+	local active_pane = window:active_pane()
+	if active_pane then
+		wezterm.GLOBAL.claude_prev_pane = {
+			workspace = window:active_workspace(),
+			pane_id = active_pane:pane_id(),
+		}
+	end
+end)
+
 wezterm.on("smart_workspace_switcher.workspace_switcher.chosen", function(window, workspace)
 	local gui_win = window:gui_window()
 	local base_path = string.gsub(workspace, "(.*[/\\])(.*)", "%2")
