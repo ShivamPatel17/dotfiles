@@ -14,6 +14,8 @@ alt - p : open -a 'Spotify'
 alt - g : open -a 'ChatGPT'
 alt - m : open -a 'Messages'
 alt - r : open -a 'Reminders'
+alt - n : open -a 'Postman'
+
 
 # Work Related
 alt - s : open -a 'Slack'
