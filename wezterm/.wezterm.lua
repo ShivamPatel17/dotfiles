@@ -107,29 +107,48 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action_callback(function(window, pane)
 			local choices = claude_agents.get_choices()
+			wezterm.log_info("[agents] picker opened, choices=" .. #choices)
 			if #choices == 0 then
 				window:toast_notification("Claude Agents", "No agents running", nil, 3000)
 				return
 			end
 			window:perform_action(
 				act.InputSelector({
-					action = wezterm.action_callback(function(_, inner_pane, id, label)
+					action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
 						if not id or id == "" then
+							wezterm.log_info("[agents] selection cancelled")
 							return
 						end
+						wezterm.log_info("[agents] selected pid=" .. tostring(id))
 						local target = claude_agents.find_pane(tonumber(id))
 						if not target then
+							wezterm.log_warn("[agents] find_pane returned nil for pid=" .. tostring(id))
 							return
 						end
+						wezterm.log_info(
+							"[agents] target: pane_id="
+								.. tostring(target.pane_id)
+								.. " workspace="
+								.. tostring(target.workspace)
+						)
 						claude_agents.record_visit(tonumber(id))
-						local current_ws = window:active_workspace()
-						local current_pane_id = pane:pane_id()
+						local current_ws = inner_window:active_workspace()
+						local current_pane_id = inner_pane:pane_id()
+						wezterm.log_info("[agents] current: workspace=" .. current_ws .. " pane_id=" .. tostring(current_pane_id))
 						wezterm.GLOBAL.claude_prev_pane = { workspace = current_ws, pane_id = current_pane_id }
 						if target.workspace ~= current_ws then
+							wezterm.log_info("[agents] switching workspace: " .. current_ws .. " -> " .. target.workspace)
 							wezterm.GLOBAL.previous_workspace = current_ws
-							window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
+							inner_window:perform_action(act.SwitchToWorkspace({ name = target.workspace }), inner_pane)
 						end
-						wezterm.run_child_process({ "wezterm", "cli", "activate-pane", "--pane-id", tostring(target.pane_id) })
+						wezterm.log_info("[agents] activating pane_id=" .. tostring(target.pane_id))
+						wezterm.run_child_process({
+							"wezterm",
+							"cli",
+							"activate-pane",
+							"--pane-id",
+							tostring(target.pane_id),
+						})
 					end),
 					title = "Claude Code Agents",
 					description = "Active agents across workspaces",

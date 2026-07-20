@@ -8,6 +8,21 @@ local EXCLUDED_PATHS = {
 	HOME .. "/.local/share/captain/",
 }
 
+local function format_duration(seconds)
+	if seconds < 60 then
+		return string.format("%ds", seconds)
+	elseif seconds < 3600 then
+		return string.format("%dm", math.floor(seconds / 60))
+	else
+		local hours = math.floor(seconds / 3600)
+		local mins = math.floor((seconds % 3600) / 60)
+		if mins > 0 then
+			return string.format("%dh%dm", hours, mins)
+		end
+		return string.format("%dh", hours)
+	end
+end
+
 local function shorten_home(path)
 	if path:sub(1, #HOME) == HOME then
 		return "~" .. path:sub(#HOME + 1)
@@ -53,6 +68,18 @@ function M.poll()
 		return cache.agents or {}
 	end
 
+	if not wezterm.GLOBAL.claude_agent_status_since then
+		wezterm.GLOBAL.claude_agent_status_since = {}
+	end
+	local since = wezterm.GLOBAL.claude_agent_status_since
+	for _, agent in ipairs(parsed) do
+		local key = tostring(agent.pid)
+		local prev = since[key]
+		if not prev or prev.status ~= agent.status then
+			since[key] = { status = agent.status, timestamp = now }
+		end
+	end
+
 	wezterm.GLOBAL.claude_agents_cache = { last_update = now, agents = parsed }
 	return parsed
 end
@@ -94,6 +121,18 @@ function M.summary()
 	return wezterm.format(parts)
 end
 
+local function get_status_duration(pid)
+	local since = wezterm.GLOBAL.claude_agent_status_since
+	if not since then
+		return 0
+	end
+	local entry = since[tostring(pid)]
+	if not entry then
+		return 0
+	end
+	return os.time() - entry.timestamp
+end
+
 function M.get_choices()
 	local agents = M.poll()
 	local by_workspace = {}
@@ -118,35 +157,35 @@ function M.get_choices()
 
 	local WORKSPACE_COLOR = "#BD93F9"
 	local NAME_COLOR = "#F8F8F2"
+	local DURATION_COLOR = "#8BE9FD"
 
-	-- gather rows first so status/workspace columns can be aligned
 	local rows = {}
 	local status_width = 0
 	local workspace_width = 0
+	local duration_width = 0
 	for _, ws in ipairs(ws_names) do
 		for _, agent in ipairs(by_workspace[ws]) do
 			local status = agent.status or "unknown"
 			local status_icon = status == "busy" and "●" or status == "waiting" and "◉" or "○"
 			local status_text = string.format("%s [%s]", status_icon, status)
+			local duration = get_status_duration(agent.pid)
+			local duration_text = format_duration(duration)
 			status_width = math.max(status_width, #status_text)
 			workspace_width = math.max(workspace_width, #ws)
+			duration_width = math.max(duration_width, #duration_text)
 			table.insert(rows, {
 				agent = agent,
 				ws = ws,
 				status = status,
 				status_text = status_text,
+				duration = duration,
+				duration_text = duration_text,
 			})
 		end
 	end
 
-	local visits = wezterm.GLOBAL.claude_agent_visits or {}
 	table.sort(rows, function(a, b)
-		local a_visit = visits[tostring(a.agent.pid)] or 0
-		local b_visit = visits[tostring(b.agent.pid)] or 0
-		if a_visit ~= b_visit then
-			return a_visit > b_visit
-		end
-		return a.ws < b.ws
+		return a.duration < b.duration
 	end)
 
 	local choices = {}
@@ -156,6 +195,8 @@ function M.get_choices()
 		local label = wezterm.format({
 			{ Foreground = { Color = status_color } },
 			{ Text = row.status_text .. string.rep(" ", status_width - #row.status_text) .. "  " },
+			{ Foreground = { Color = DURATION_COLOR } },
+			{ Text = string.rep(" ", duration_width - #row.duration_text) .. row.duration_text .. "  " },
 			{ Foreground = { Color = WORKSPACE_COLOR } },
 			{ Text = row.ws .. string.rep(" ", workspace_width - #row.ws) .. "  " },
 			{ Foreground = { Color = NAME_COLOR } },
@@ -178,29 +219,36 @@ function M.record_visit(pid)
 end
 
 function M.find_pane(pid)
+	wezterm.log_info("[agents:find_pane] looking up pid=" .. tostring(pid))
 	local success, tty_out = wezterm.run_child_process({ "ps", "-o", "tty=", "-p", tostring(pid) })
 	if not success or not tty_out or tty_out:match("^%s*$") then
+		wezterm.log_warn("[agents:find_pane] ps failed or empty tty for pid=" .. tostring(pid) .. " success=" .. tostring(success))
 		return nil
 	end
 
 	local tty = "/dev/" .. tty_out:gsub("%s+", "")
+	wezterm.log_info("[agents:find_pane] pid=" .. tostring(pid) .. " tty=" .. tty)
 
 	local ok_list, list_json = wezterm.run_child_process({ "wezterm", "cli", "list", "--format", "json" })
 	if not ok_list or not list_json then
+		wezterm.log_warn("[agents:find_pane] wezterm cli list failed")
 		return nil
 	end
 
 	local ok_parse, panes = pcall(wezterm.json_parse, list_json)
 	if not ok_parse or type(panes) ~= "table" then
+		wezterm.log_warn("[agents:find_pane] json parse failed")
 		return nil
 	end
 
 	for _, p in ipairs(panes) do
 		if p.tty_name == tty then
+			wezterm.log_info("[agents:find_pane] matched pane_id=" .. tostring(p.pane_id) .. " workspace=" .. tostring(p.workspace))
 			return { pane_id = p.pane_id, workspace = p.workspace }
 		end
 	end
 
+	wezterm.log_warn("[agents:find_pane] no pane matched tty=" .. tty)
 	return nil
 end
 
