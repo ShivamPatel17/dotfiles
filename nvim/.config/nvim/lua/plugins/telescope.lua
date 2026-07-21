@@ -28,7 +28,7 @@ return {
           "--glob",
           "!.git/*", -- Exclude .git directory
         },
-        file_ignore_patterns = { "%.git/", "node_modules", ".zsh_history" },
+        file_ignore_patterns = { "%.git/", "node_modules", ".zsh_history", "%.terraform/" },
         prompt_prefix = "",
         path_display = function(_, path)
           local cols = vim.o.columns
